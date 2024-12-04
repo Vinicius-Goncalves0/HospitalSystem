@@ -14,7 +14,7 @@ import com.hospitalsystem.Model.Patient;
 public class AlertDAO {
     
     // Generate Alert
-    public void generateAlert(Alert alert, Device device, Patient patient) throws SQLException {
+    public boolean generateAlert(Alert alert, Device device, Patient patient) throws SQLException {
         String insertAlertSQL = "INSERT INTO alerts (type, message, doctor, data) VALUES (?, ?, ?, ?)";
         String insertDeviceAlertSQL = "INSERT INTO device_alerts (device_id, alert_id) VALUES (?, ?)";
         String insertPatientAlertSQL = "INSERT INTO patient_alerts (patient_id, alert_id) VALUES (?, ?)";
@@ -55,6 +55,8 @@ public class AlertDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return true;
     }
 
     // Check if a alert belongs to a patient
