@@ -11,7 +11,6 @@ public class Patient {
     private String email;
     private String histories;
 
-
     public Patient(String name, String CPF, String birthDate, String address, String phone, String email, String histories) {
         this.name = name;
         this.CPF = CPF;

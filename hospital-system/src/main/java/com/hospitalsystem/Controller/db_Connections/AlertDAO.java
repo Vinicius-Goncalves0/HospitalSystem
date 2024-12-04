@@ -12,7 +12,7 @@ import com.hospitalsystem.Model.Device;
 import com.hospitalsystem.Model.Patient;
 
 public class AlertDAO {
-
+    
     // Generate Alert
     public void generateAlert(Alert alert, Device device, Patient patient) throws SQLException {
         String insertAlertSQL = "INSERT INTO alerts (type, message, doctor, data) VALUES (?, ?, ?, ?)";
@@ -238,7 +238,7 @@ public class AlertDAO {
         String sql = "SELECT a.* FROM alerts a " +
                      "JOIN patient_alerts pa ON a.id = pa.alert_id " +
                      "WHERE pa.patient_id = ?";
-        List<Alert> alertas = new ArrayList<>();
+        List<Alert> alerts = new ArrayList<>();
     
         try (Connection conn = db_Connection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -252,20 +252,20 @@ public class AlertDAO {
                     String data = rs.getString("data");
     
                     Alert alert = new Alert(id, type, message, doctor, data);
-                    alertas.add(alert);
+                    alerts.add(alert);
                 }
             }
         }
     
-        return alertas;
+        return alerts;
     }
 
     // Check if alert exists
-    public boolean alertExists(String mensagem, String deviceType) throws SQLException {
+    public boolean alertExists(String message, String deviceType) throws SQLException {
         String query = "SELECT COUNT(*) FROM alerts WHERE message = ? AND type = ?";
         try (Connection conn = db_Connection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, mensagem);
+            stmt.setString(1, message);
             stmt.setString(2, deviceType);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
