@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hospitalsystem.Main;
 import com.hospitalsystem.Model.Medication;
 import com.hospitalsystem.Model.Patient;
 import com.hospitalsystem.Model.Appointment;
@@ -20,7 +21,7 @@ public class MedicationDAO {
         String medicationToAppointmentSql = "INSERT INTO appointment_medications (appointment_id, medication_id) VALUES (?, ?)";
         String patientToMedicationSql = "INSERT INTO patient_medications (patient_id, medication_id) VALUES (?, ?)";
         
-        try (Connection conn = db_Connection.getConnection()) {
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode())) {
 
             conn.setAutoCommit(false);
 
@@ -72,7 +73,7 @@ public class MedicationDAO {
                 "JOIN hospital_system.medications m ON pm.medication_id = m.id " +
                 "WHERE p.name = ?";
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, patientName);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -104,7 +105,7 @@ public class MedicationDAO {
                 + "JOIN hospital_system.medications m ON am.medication_id = m.id "
                 + "WHERE am.appointment_id = ?";
     
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, appointmentId);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -135,7 +136,7 @@ public class MedicationDAO {
                      "JOIN hospital_system.patient_medications pm ON p.id = pm.patient_id " +
                      "WHERE p.name = ? AND pm.medication_id = ?";
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, patientName);
             stmt.setInt(2, medicationId);
@@ -173,7 +174,7 @@ public class MedicationDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             getPatientIdStmt = conn.prepareStatement(getPatientIdSql);
             getPatientIdStmt.setString(1, patientName);

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hospitalsystem.Main;
 import com.hospitalsystem.Model.Alert;
 import com.hospitalsystem.Model.Device;
 import com.hospitalsystem.Model.Patient;
@@ -14,12 +15,12 @@ import com.hospitalsystem.Model.Patient;
 public class AlertDAO {
     
     // Generate Alert
-    public boolean generateAlert(Alert alert, Device device, Patient patient) throws SQLException {
+    public void generateAlert(Alert alert, Device device, Patient patient) throws SQLException {
         String insertAlertSQL = "INSERT INTO alerts (type, message, doctor, data) VALUES (?, ?, ?, ?)";
         String insertDeviceAlertSQL = "INSERT INTO device_alerts (device_id, alert_id) VALUES (?, ?)";
         String insertPatientAlertSQL = "INSERT INTO patient_alerts (patient_id, alert_id) VALUES (?, ?)";
 
-        try (Connection conn = db_Connection.getConnection()) {
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode())) {
             conn.setAutoCommit(false);
 
             try (PreparedStatement alertStmt = conn.prepareStatement(insertAlertSQL,
@@ -53,10 +54,8 @@ public class AlertDAO {
             conn.commit();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
-
-        return true;
     }
 
     // Check if a alert belongs to a patient
@@ -66,7 +65,7 @@ public class AlertDAO {
                      "JOIN hospital_system.patient_alerts pd ON p.id = pd.patient_id " +
                      "WHERE p.name = ? AND pd.alert_id = ?";
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, patientName);
             stmt.setInt(2, alertId);
@@ -101,7 +100,7 @@ public class AlertDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             String getPatientIdSql = "SELECT id FROM patients WHERE name = ?";
             getPatientIdStmt = conn.prepareStatement(getPatientIdSql);
@@ -163,7 +162,7 @@ public class AlertDAO {
         String deleteDeviceAlertSQL = "DELETE FROM device_alerts WHERE alert_id = ?";
         String deletePatientAlertSQL = "DELETE FROM patient_alerts WHERE alert_id = ?";
 
-        try (Connection conn = db_Connection.getConnection()) {
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode())) {
             conn.setAutoCommit(false);
 
             try (PreparedStatement deleteDeviceAlertStmt = conn.prepareStatement(deleteDeviceAlertSQL)) {
@@ -185,8 +184,7 @@ public class AlertDAO {
             System.out.println("Alert deleted successfully!");
 
         } catch (SQLException e) {
-            e.printStackTrace();
-            throw new SQLException("Error deleting alert: " + e.getMessage());
+            throw e;
         }
     }
 
@@ -195,7 +193,7 @@ public class AlertDAO {
         String selectAlertsSQL = "SELECT * FROM alerts";
         List<Alert> alerts = new ArrayList<>();
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
                 PreparedStatement stmt = conn.prepareStatement(selectAlertsSQL);
                 ResultSet rs = stmt.executeQuery()) {
 
@@ -219,7 +217,7 @@ public class AlertDAO {
         String sql = "SELECT patient_id FROM patient_alerts WHERE alert_id = ?";
         int patientId = 0;
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, alertId);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -242,7 +240,7 @@ public class AlertDAO {
                      "WHERE pa.patient_id = ?";
         List<Alert> alerts = new ArrayList<>();
     
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, patientId);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -265,7 +263,7 @@ public class AlertDAO {
     // Check if alert exists
     public boolean alertExists(String message, String deviceType) throws SQLException {
         String query = "SELECT COUNT(*) FROM alerts WHERE message = ? AND type = ?";
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, message);
             stmt.setString(2, deviceType);

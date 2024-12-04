@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.hospitalsystem.Main;
 import com.hospitalsystem.Model.Device;
 import com.hospitalsystem.Model.Patient;
 
@@ -18,7 +19,7 @@ public class DeviceDAO {
         String deviceSql = "INSERT INTO devices (type, brand, model, activationStatus, value, alertValueMax, alertValueMin) VALUES (?, ?, ?, ?, ?, ?, ?)";
         String deviceToPatientSql = "INSERT INTO patient_devices (patient_id, device_id) VALUES (?, ?)";
         
-        try (Connection conn = db_Connection.getConnection()) {
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode())) {
 
             conn.setAutoCommit(false);
 
@@ -63,7 +64,7 @@ public class DeviceDAO {
             "JOIN hospital_system.devices d ON pd.device_id = d.id " +
             "WHERE p.name = ?";
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, patientName);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -100,7 +101,7 @@ public class DeviceDAO {
         String sql = "SELECT * FROM devices WHERE activationStatus = true";
         List<Device> devices = new ArrayList<>();
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
@@ -139,7 +140,7 @@ public class DeviceDAO {
                      "JOIN hospital_system.patient_devices pd ON p.id = pd.patient_id " +
                      "WHERE p.name = ? AND pd.device_id = ?";
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, patientName);
             stmt.setInt(2, deviceId);
@@ -178,7 +179,7 @@ public class DeviceDAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Establish the connection
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             // Get patient ID
             getPatientIdStmt = conn.prepareStatement(getPatientIdSql);
@@ -235,7 +236,7 @@ public class DeviceDAO {
 
         String sql = "UPDATE hospital_system.devices SET activationStatus = TRUE WHERE id = ?";
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, deviceId);
             stmt.executeUpdate();
@@ -255,7 +256,7 @@ public class DeviceDAO {
 
         String sql = "UPDATE hospital_system.devices SET activationStatus = FALSE WHERE id = ?";
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, deviceId);
             stmt.executeUpdate();
@@ -274,7 +275,7 @@ public class DeviceDAO {
                      "JOIN hospital_system.devices d ON pd.device_id = d.id " +
                      "WHERE p.name = ? AND d.id = ?";
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, patientName);
             stmt.setInt(2, deviceId);
@@ -307,7 +308,7 @@ public class DeviceDAO {
 
         String sql = "UPDATE hospital_system.devices SET value = ? WHERE id = ?";
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, value);
             stmt.setInt(2, deviceId);
@@ -331,7 +332,7 @@ public class DeviceDAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Establish the connection
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             // Prepare the SQL query
             String sql = "SELECT * FROM devices WHERE id = ?";
@@ -383,7 +384,7 @@ public class DeviceDAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Establish the connection
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             // Prepare the SQL query
             String sql = "SELECT * FROM devices WHERE id LIKE ?";
@@ -430,7 +431,7 @@ public class DeviceDAO {
         String sql = "SELECT patient_id FROM patient_devices WHERE device_id = ?";
         int patientId = 0;
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, deviceId);
             try (ResultSet rs = stmt.executeQuery()) {

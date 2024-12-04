@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.hospitalsystem.Main;
 import com.hospitalsystem.Model.Patient;
 
 public class PatientDAO {
@@ -22,7 +23,7 @@ public class PatientDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setString(1, patient.getName());
@@ -62,7 +63,7 @@ public class PatientDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             String sql = "UPDATE patients SET name = ?, cpf = ?, birth_date = ?, address = ?, phone = ?, email = ?, histories = ? WHERE id = ?";
             stmt = conn.prepareStatement(sql);
@@ -100,7 +101,7 @@ public class PatientDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             String sql = "SELECT * FROM patients WHERE name LIKE ?";
             stmt = conn.prepareStatement(sql);
@@ -149,7 +150,7 @@ public class PatientDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             String sql = "SELECT * FROM patients WHERE name = ?";
             stmt = conn.prepareStatement(sql);
@@ -197,7 +198,7 @@ public class PatientDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             String sql = "SELECT * FROM patients";
             stmt = conn.prepareStatement(sql);
@@ -244,7 +245,7 @@ public class PatientDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
             conn.setAutoCommit(false);
 
             String getAppointmentIdsSql = "SELECT appointment_id FROM hospital_system.patient_appointments WHERE patient_id = ?";
@@ -392,7 +393,7 @@ public class PatientDAO {
         String patientName = null;
         String sql = "SELECT name FROM patients WHERE id = ?";
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, patientId);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -413,7 +414,7 @@ public class PatientDAO {
         String sql = "SELECT * FROM patients WHERE id = ?";
         Patient patient = null;
 
-        try (Connection conn = db_Connection.getConnection();
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {

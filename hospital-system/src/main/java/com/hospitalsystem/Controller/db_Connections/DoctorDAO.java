@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hospitalsystem.Main;
 import com.hospitalsystem.Model.Doctor;
 
 public class DoctorDAO {
@@ -21,7 +22,7 @@ public class DoctorDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setString(1, doctor.getName());
@@ -60,7 +61,7 @@ public class DoctorDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             String sql = "UPDATE doctors SET name = ?, specialty = ?, CRM = ?, phone = ?, email = ? WHERE id = ?";
             stmt = conn.prepareStatement(sql);
@@ -97,7 +98,7 @@ public class DoctorDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             String sql = "SELECT * FROM doctors WHERE name LIKE ?";
             stmt = conn.prepareStatement(sql);
@@ -144,7 +145,7 @@ public class DoctorDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             String sql = "SELECT * FROM doctors WHERE name = ?";
             stmt = conn.prepareStatement(sql);
@@ -191,7 +192,7 @@ public class DoctorDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             String sql = "SELECT * FROM doctors";
             stmt = conn.prepareStatement(sql);
@@ -238,7 +239,7 @@ public class DoctorDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = db_Connection.getConnection();
+            conn = db_Connection.getConnection(Main.getDataBaseMode());
 
             deleteDoctorStmt = conn.prepareStatement(deleteDoctorSql);
             deleteDoctorStmt.setInt(1, doctorId);

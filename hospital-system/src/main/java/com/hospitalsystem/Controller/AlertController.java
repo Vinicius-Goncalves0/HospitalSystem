@@ -3,6 +3,7 @@ package com.hospitalsystem.Controller;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.hospitalsystem.Main;
 import com.hospitalsystem.Controller.db_Connections.AlertDAO;
 import com.hospitalsystem.Model.Alert;
 import com.hospitalsystem.Model.Device;
