@@ -1,0 +1,969 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset0 Cambria Math;}}
+{\colortbl ;\red255\green0\blue0;}
+{\*\generator Riched20 10.0.22621}{\*\mmathPr\mmathFont1\mwrapIndent1440 }\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\qc\cf1\b\strike\f0\fs52\lang22 CEN\'c1RIO DE TESTES \cf0\b0\strike0\fs28\par
+\b\i\fs40 Paciente\i0\fs28\par
+\ul\fs36 1.Registrar Paciente \ulnone\fs28\par
+Fluxo Principal\par
+\b0 O usu\'e1rio inicia o sistema e acessa o menu de cria\'e7\'e3o de pacientes.\par
+O sistema solicita os seguintes dados:\par
+Nome do paciente.\par
+CPF.\par
+Data de nascimento.\par
+Hist\'f3rico m\'e9dico.\par
+Endere\'e7o.\par
+Telefone.\par
+E-mail.\par
+O usu\'e1rio insere todos os dados corretamente:\par
+Nome: "Vitor Rech".\par
+CPF: "870.087.340-34".\par
+Data de nascimento: "02/11/2003".\par
+Hist\'f3rico m\'e9dico: "Hipertens\'e3o".\par
+Endere\'e7o: "Rua das Flores, 123".\par
+Telefone: "(31) 91234-5678".\par
+E-mail: "vitor.silva@gmail.com".\par
+Mostra a mensagem: \par
+O paciente \'e9 registrado com sucesso no banco de dados.\par
+O sistema exibe a mensagem: "Paciente registrado com sucesso".\par
+\par
+\b Fluxo Alternativo\par
+\b0 O usu\'e1rio insere apenas parte dos dados corretamente:\par
+Nome: "Vitor Rech".\par
+CPF: "8700873403" (com 10 d\'edgitos, ao inv\'e9s de 11).\par
+Data de nascimento: "02/11/2003".\par
+Hist\'f3rico m\'e9dico: "Nenhum".\par
+Endere\'e7o: "Rua das Flores, 123".\par
+Telefone: "(31) 91234-5678".\par
+E-mail: "vitor.silva@gmail.com".\par
+O sistema valida o CPF e identifica que est\'e1 no formato incorreto.\par
+O sistema exibe a mensagem: "Favor digitar um CPF v\'e1lido".\par
+   CPF: 87008734034\par
+     O sistema exibe a mensagem: "Paciente registrado com sucesso".\par
+\par
+\b Fluxo Negativo\par
+\b0 O usu\'e1rio insere todos os dados corretamente:\par
+Nome: "Vitor Rech".\par
+CPF: "870.087.340-34".\par
+Data de nascimento: "02-11-2003".\par
+Hist\'f3rico m\'e9dico: "Asma".\par
+Endere\'e7o: "Rua das Flores, 123".\par
+Telefone: "(31) 91234-5678".\par
+E-mail: "vitor.silva@gmail.com".\par
+Aparece a mensagem:\par
+Durante a execu\'e7\'e3o, o banco de dados est\'e1 indispon\'edvel.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao registrar o paciente: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\par
+\ul\fs36 2. Consultar Hist\'f3rico de Paciente \ulnone\fs28\par
+Consultar Hist\'f3rico do Paciente\par
+\par
+Fluxo Principal\par
+\b0 O usu\'e1rio inicia o sistema e acessa o menu de consulta de hist\'f3rico do paciente.\par
+O sistema solicita o CPF do paciente.\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34".\par
+O sistema valida o CPF e encontra o paciente no banco de dados.\par
+O sistema exibe os seguintes dados do paciente:\par
+Nome: "Vitor Silva".\par
+CPF: "870.087.340-34".\par
+Data de nascimento: "02/11/2003".\par
+Hist\'f3rico m\'e9dico: "Hipertens\'e3o".\par
+Endere\'e7o: "Rua das Flores, 123".\par
+Telefone: "(11) 98765-4321".\par
+E-mail: "vitor.silva@gmail.com".\par
+Data de Nascimento: 02-11-2003\par
+O sistema exibe a mensagem: "Hist\'f3rico do paciente carregado com sucesso".\par
+\b\par
+Fluxo Alternativo\par
+\b0 O usu\'e1rio insere o CPF incorretamente:\par
+CPF: "870.087.340-3" (com 10 d\'edgitos, ao inv\'e9s de 11).\par
+O sistema valida o CPF e identifica que est\'e1 no formato incorreto.\par
+O sistema exibe a mensagem: "Favor digitar um CPF v\'e1lido". \par
+87008734034\par
+O sistema exibe a mensagem: "Hist\'f3rico do paciente carregado com sucesso".\par
+\par
+\b Fluxo Negativo\par
+\b0 O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34".\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao consultar o hist\'f3rico do paciente: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\ul\b\fs36 3. Atualizar Dados do Paciente\ulnone\b0\fs28\par
+\b Fluxo Principal\par
+\b0 O usu\'e1rio inicia o sistema e acessa o menu de atualiza\'e7\'e3o de dados do paciente.\par
+O sistema solicita o CPF do paciente.\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "87008734034".\par
+O sistema valida o CPF e encontra o paciente no banco de dados.\par
+O sistema exibe os seguintes dados atuais do paciente:\par
+Nome: "Vitor".\par
+CPF: "870.087.340-34".\par
+Data de nascimento: "02-11-2003".\par
+Endere\'e7o: "ADDRESS".\par
+Telefone: "PHONE".\par
+E-mail: "Vitor.silva@gmail.com".\par
+O usu\'e1rio atualiza os campos necess\'e1rios:\par
+Endere\'e7o: "Rua das Flores, 789".\par
+Telefone: "51987654321".\par
+O usu\'e1rio clica no bot\'e3o "Salvar".\par
+O sistema exibe a mensagem: "Dados atualizados com sucesso".\b\par
+Fluxo Alternativo\par
+\b0 O usu\'e1rio tenta atualizar os dados, mas deixa um campo obrigat\'f3rio em branco (ex.: "Endere\'e7o" vazio) e clica em "Salvar".\par
+O sistema valida que o campo obrigat\'f3rio n\'e3o foi preenchido e exibe a mensagem de \b erro\b0 : "Preencha todos os campos obrigat\'f3rios".\par
+O usu\'e1rio corrige o erro, preenche o campo "Endere\'e7o" e clica novamente em "Salvar".\par
+O sistema exibe a mensagem: "Dados atualizados com sucesso".\par
+\b\par
+Fluxo Negativo\par
+\b0 O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34".\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao atualizar os dados do paciente: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\ul\b\fs36 4. Consultar Dados do Paciente\ulnone\fs28\par
+Fluxo Principal\par
+\b0 O usu\'e1rio inicia o sistema e acessa o menu de consulta de dados do paciente.\par
+O sistema solicita o CPF do paciente.\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34".\par
+O sistema valida o CPF e encontra o paciente no banco de dados.\par
+O sistema exibe os seguintes dados do paciente:\par
+Nome: "Vitor Silva".\par
+CPF: "870.087.340-34".\par
+Data de nascimento: "02/11/2003".\par
+Hist\'f3rico m\'e9dico: "Hipertens\'e3o".\par
+Endere\'e7o: "Rua das Flores, 123".\par
+Telefone: "(11) 98765-4321".\par
+E-mail: "vitor.silva@gmail.com".\par
+O sistema exibe a mensagem: "Dados do paciente carregados com sucesso".\par
+\b\par
+Fluxo Alternativo\par
+\b0 O usu\'e1rio insere o CPF incorretamente:\par
+CPF: "870.087.340-3" (com 10 d\'edgitos, ao inv\'e9s de 11).\par
+O sistema valida o CPF e identifica que est\'e1 no formato incorreto.\par
+O sistema exibe a mensagem: "Favor digitar um CPF v\'e1lido".\par
+Usuario coloca o CPF 87008734034\par
+O sistema exibe a mensagem: "Dados do paciente carregados com sucesso".\par
+\b\par
+Fluxo Negativo\par
+\b0 O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34".\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao consultar os dados do paciente: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\ul\b\fs36 5. Agendar Consulta M\'e9dica\ulnone\b0\fs28\par
+\b Fluxo Principal\b0\par
+O usu\'e1rio inicia o sistema e acessa o menu de agendamento de consulta m\'e9dica.\par
+O sistema solicita o CPF do paciente.\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34".\par
+O sistema valida o CPF e encontra o paciente no banco de dados.\par
+O sistema solicita a data e hor\'e1rio da consulta.\par
+O usu\'e1rio escolhe a data e hor\'e1rio corretamente:\par
+Data: "10/12/2024".\par
+Hor\'e1rio: "10:00 AM".\par
+O usu\'e1rio clica no bot\'e3o "Agendar".\par
+O sistema exibe a mensagem: "Consulta agendada com sucesso".\par
+O sistema confirma o agendamento com os dados:\par
+Paciente: "Vitor Silva"\par
+Data: "10/12/2024"\par
+Hor\'e1rio: "10:00 AM".\par
+\b\par
+Fluxo Alternativo\par
+\b0 O usu\'e1rio tenta agendar uma consulta para uma data ou hor\'e1rio j\'e1 ocupados (ex.: "10/12/2024", "10:00 AM").\par
+O sistema verifica a disponibilidade e exibe a mensagem: "Hor\'e1rio j\'e1 ocupado. Por favor, escolha outro hor\'e1rio."\par
+O usu\'e1rio escolhe um novo hor\'e1rio:\par
+Data: "10/12/2024"\par
+Hor\'e1rio: "11:00 AM".\par
+O usu\'e1rio clica no bot\'e3o "Agendar".\par
+O sistema exibe a mensagem: "Consulta agendada com sucesso".\par
+\par
+\b Fluxo Negativo\b0\par
+O usu\'e1rio insere o CPF;\par
+CPF: "870.087.340-34".\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao agendar a consulta: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\cf1\b\fs40 M\'c9DICO\cf0\b0\fs28\par
+\ul\b\fs36 1. Registrar M\'e9dico\ulnone\b0\fs28\par
+\b Fluxo Principal\b0\par
+O usu\'e1rio inicia o sistema e acessa o menu de registro de m\'e9dicos.\par
+O sistema solicita os seguintes dados:\par
+Nome: "Dr. Jo\'e3o Pereira"\par
+CRM: "1234567"\par
+Especialidade: "Cardiologia"\par
+Telefone: "(11) 98765-4321"\par
+E-mail: "joao.pereira@gmail.com"\par
+O usu\'e1rio insere todos os dados corretamente:\par
+Nome: "Dr. Jo\'e3o Pereira"\par
+CRM: "1234567"\par
+Especialidade: "Cardiologia"\par
+Telefone: "(11) 98765-4321"\par
+E-mail: "joao.pereira@gmail.com"\par
+O sistema valida os dados e registra o m\'e9dico no banco de dados.\par
+O sistema exibe a mensagem: "Medico registrado com sucesso".\par
+\par
+\b Fluxo Alternativo\b0\par
+O usu\'e1rio insere um CRM inv\'e1lido (por exemplo, com letras ou com menos ou mais de 7 d\'edgitos):\par
+CRM: "12A34567"\par
+O sistema valida o CRM e identifica que ele est\'e1 no formato incorreto.\par
+O sistema exibe a mensagem: "Favor digitar um CRM v\'e1lido".\par
+O registro do m\'e9dico n\'e3o \'e9 conclu\'eddo.\par
+O Medico insere os dados corretos ap\'f3s o erro:\par
+CRM: "1234567"\par
+O sistema registra o m\'e9dico corretamente e exibe a mensagem: "M\'e9dico registrado com sucesso".\par
+\par
+\b Fluxo Negativo\b0\par
+O usu\'e1rio insere o CPF do m\'e9dico corretamente:\par
+CRM: "1234567"\par
+Mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao registrar o m\'e9dico: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\ul\b\fs36 2. Alterar Dados do M\'e9dico\ulnone\b0\par
+\b\fs28 Fluxo Principal\b0\par
+O usu\'e1rio inicia o sistema e acessa o menu de altera\'e7\'e3o de dados do m\'e9dico.\par
+O sistema solicita o CRM do m\'e9dico.\par
+O usu\'e1rio insere o CRM corretamente:\par
+CRM: "1234567"\par
+O sistema valida o CRM e encontra o m\'e9dico no banco de dados.\par
+O sistema exibe os seguintes dados do m\'e9dico:\par
+Nome: "Dr. Jo\'e3o Pereira"\par
+CRM: "1234567"\par
+Especialidade: "Cardiologia"\par
+Telefone: "(11) 98765-4321"\par
+E-mail: "joao.pereira@gmail.com"\par
+\par
+O usu\'e1rio altera os campos necess\'e1rios, por exemplo:\par
+Telefone: "(11) 99876-5432"\par
+E-mail: "joao.pereira157@gmail.com"\par
+\par
+O usu\'e1rio clica no bot\'e3o "Salvar".\par
+O sistema exibe a mensagem: "Dados do m\'e9dico atualizados com sucesso".\par
+\b\par
+Fluxo Alternativo\par
+\b0 O usu\'e1rio tenta alterar os dados, mas deixa um campo obrigat\'f3rio em branco (ex.: "Especialidade" vazio) e clica no bot\'e3o "Salvar".\par
+O sistema valida que o campo obrigat\'f3rio n\'e3o foi preenchido e exibe a mensagem de erro: "Preencha todos os campos obrigat\'f3rios".\par
+O usu\'e1rio corrige o erro, preenche o campo "Especialidade" e clica novamente em "Salvar".\par
+O sistema exibe a mensagem: "Dados do m\'e9dico atualizados com sucesso".\par
+\par
+\b Fluxo Negativo\b0\par
+O usu\'e1rio insere o CRM corretamente:\par
+CRM: "1234567".\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao alterar os dados do m\'e9dico: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\ul\b\fs36 3. Consultar Dados do M\'e9dico\ulnone\b0\fs28\par
+\b Fluxo Principal\b0\par
+O usu\'e1rio inicia o sistema e acessa o menu de consulta de dados do m\'e9dico.\par
+O sistema solicita o CRM do m\'e9dico.\par
+O usu\'e1rio insere o CRM corretamente:\par
+CRM: "1234567"\par
+O sistema valida o CRM e encontra o m\'e9dico no banco de dados.\par
+O sistema exibe os seguintes dados do m\'e9dico:\par
+Nome: "Dr. Jo\'e3o Pereira"\par
+CRM: "1234567"\par
+Especialidade: "Cardiologia"\par
+Telefone: "(11) 98765-4321"\par
+E-mail: "joao.pereira@gmail.com"\par
+O sistema exibe a mensagem: "Dados do m\'e9dico carregados com sucesso".\par
+\par
+Fluxo Alternativo\par
+O usu\'e1rio insere o CRM incorretamente:\par
+CRM: "12345" (com menos d\'edgitos, ao inv\'e9s de 7).\par
+O sistema valida o CRM e identifica que est\'e1 no formato incorreto.\par
+O sistema exibe a mensagem: "Favor digitar um CRM v\'e1lido".\par
+Medico digita um CRM correto; \par
+O sistema exibe a mensagem: "Dados do m\'e9dico carregados com sucesso".\par
+\par
+\b Fluxo Negativo\b0\par
+O usu\'e1rio insere o CRM corretamente:\par
+CRM: "1234567"\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao consultar os dados do m\'e9dico: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\ul\b\fs36 4. Ajustar Plano de Tratamento do Paciente\ulnone\b0\fs28\par
+\b Fluxo Principal\b0\par
+O usu\'e1rio inicia o sistema e acessa o menu de ajustes do plano de tratamento do paciente.\par
+O sistema solicita o CPF do paciente.\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34"\par
+O sistema valida o CPF e encontra o paciente no banco de dados.\par
+O sistema exibe os dados do paciente, incluindo o plano de tratamento atual:\par
+Nome: "Vitor Silva"\par
+CPF: "870.087.340-34"\par
+Data de nascimento: "02/11/2003"\par
+Hist\'f3rico m\'e9dico: "Hipertens\'e3o"\par
+Endere\'e7o: "Rua das Flores, 123"\par
+Telefone: "(11) 98765-4321"\par
+E-mail: "vitor.silva@gmail.com"\par
+Plano de tratamento: "Medicamento X, 1x ao dia"\par
+\par
+O usu\'e1rio ajusta o plano de tratamento, adicionando ou alterando informa\'e7\'f5es:\par
+Plano de tratamento: "Medicamento Y, 2x ao dia"\par
+\par
+O usu\'e1rio clica no bot\'e3o "Salvar".\par
+O sistema exibe a mensagem: "Plano de tratamento ajustado com sucesso".\par
+\b\par
+Fluxo Alternativo\par
+\b0 O usu\'e1rio tenta ajustar o plano de tratamento deixando um campo obrigat\'f3rio vazio (por exemplo, "Instru\'e7\'f5es adicionais") e clica em "Salvar".\par
+O sistema valida que o campo obrigat\'f3rio n\'e3o foi preenchido e exibe a mensagem: "Preencha todos os campos obrigat\'f3rios".\par
+O usu\'e1rio corrige o erro, preenche o campo "Instru\'e7\'f5es adicionais" e clica novamente em "Salvar".\par
+O sistema exibe a mensagem: "Plano de tratamento ajustado com sucesso".\par
+\par
+\b Fluxo Negativo\b0\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34"\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao ajustar o plano de tratamento: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\ul\b\fs36 5. Criar Prescri\'e7\'e3o M\'e9dica do Paciente\ulnone\b0\fs28\par
+\b Fluxo Principal\par
+\b0 O usu\'e1rio inicia o sistema e acessa o menu de cria\'e7\'e3o de prescri\'e7\'e3o m\'e9dica do paciente.\par
+O sistema solicita o CPF do paciente.\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34"\par
+O sistema valida o CPF e encontra o paciente no banco de dados.\par
+O sistema exibe os dados do paciente:\par
+Nome: "Vitor Silva"\par
+CPF: "870.087.340-34"\par
+Data de nascimento: "02/11/2003"\par
+Hist\'f3rico m\'e9dico: "Hipertens\'e3o"\par
+Endere\'e7o: "Rua das Flores, 123"\par
+Telefone: "(11) 98765-4321"\par
+E-mail: "vitor.silva@gmail.com"\par
+\par
+O sistema solicita os dados da prescri\'e7\'e3o:\par
+Medicamento: "Medicamento X"\par
+Dosagem: "1 comprimido ao dia"\par
+Instru\'e7\'f5es: "Tomar ap\'f3s as refei\'e7\'f5es"\par
+Dura\'e7\'e3o: "30 dias"\par
+\par
+O usu\'e1rio insere os dados corretamente e clica em "Salvar".\par
+O sistema exibe a mensagem: "Prescri\'e7\'e3o m\'e9dica criada com sucesso".\par
+\b\par
+Fluxo Alternativo\par
+\b0 O usu\'e1rio tenta criar a prescri\'e7\'e3o, mas deixa um campo obrigat\'f3rio em branco (por exemplo, "Medicamento") e clica em "Salvar".\par
+O sistema valida que o campo obrigat\'f3rio n\'e3o foi preenchido e exibe a mensagem de erro: "Favor preencher todos os campos obrigat\'f3rios".\par
+O usu\'e1rio corrige o erro, preenche o campo "Medicamento" e clica novamente em "Salvar".\par
+O sistema exibe a mensagem: "Prescri\'e7\'e3o m\'e9dica criada com sucesso".\par
+\b\par
+Fluxo Negativo\b0\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34"\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao criar a prescri\'e7\'e3o m\'e9dica: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\par
+\cf0\ul\fs36 6. Ajustar Medica\'e7\'f5es do Paciente\ulnone\fs28\par
+Fluxo Principal\par
+\b0 O usu\'e1rio inicia o sistema e acessa o menu de ajuste das medica\'e7\'f5es do paciente.\par
+O sistema solicita o CPF do paciente.\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34"\par
+O sistema valida o CPF e encontra o paciente no banco de dados.\par
+O sistema exibe os dados do paciente, incluindo as medica\'e7\'f5es atuais:\par
+Nome: "Vitor Silva"\par
+CPF: "870.087.340-34"\par
+Data de nascimento: "02/11/2003"\par
+Hist\'f3rico m\'e9dico: "Hipertens\'e3o"\par
+Endere\'e7o: "Rua das Flores, 123"\par
+Telefone: "(11) 98765-4321"\par
+E-mail: "vitor.silva@gmail.com"\par
+Medica\'e7\'f5es atuais: "Medicamento X - 1x ao dia"\par
+\par
+O usu\'e1rio ajusta as medica\'e7\'f5es, substituindo o medicamento atual:\par
+Nova medica\'e7\'e3o: "Medicamento Y - 2x ao dia"\par
+\par
+O usu\'e1rio clica no bot\'e3o "Salvar".\par
+O sistema exibe a mensagem: "Medica\'e7\'f5es ajustadas com sucesso".\par
+\b\par
+Fluxo Alternativo\par
+\b0 O usu\'e1rio tenta ajustar as medica\'e7\'f5es, mas deixa um campo obrigat\'f3rio em branco (por exemplo, "Dosagem") e clica em "Salvar".\par
+O sistema valida que o campo obrigat\'f3rio n\'e3o foi preenchido e exibe a mensagem de erro: "Favor preencher todos os campos obrigat\'f3rios".\par
+O usu\'e1rio corrige o erro, preenche o campo "Dosagem" e clica novamente em "Salvar".\par
+O sistema exibe a mensagem: "Medica\'e7\'f5es ajustadas com sucesso".\par
+\b\par
+Fluxo Negativo\par
+O usu\'e1rio insere o CPF corretamente:\par
+\b0 CPF: "870.087.340-34"\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao ajustar as medica\'e7\'f5es: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\par
+\cf1\fs40 CONSULTA\fs28\par
+\cf0\ul\fs36 1. Gerar Consulta M\'e9dica com Data, Hora, M\'e9dico, Paciente, Diagn\'f3stico e Prescri\'e7\'e3o de Medicamentos\ulnone\fs28\par
+Fluxo Principal\par
+\b0 O usu\'e1rio inicia o sistema e acessa o menu para gerar uma consulta m\'e9dica.\par
+O sistema solicita os seguintes dados para a consulta m\'e9dica:\par
+\par
+Data da consulta\par
+Hora da consulta\par
+M\'e9dico\par
+Paciente\par
+Diagn\'f3stico\par
+Prescri\'e7\'e3o de Medicamentos\par
+O usu\'e1rio preenche os campos corretamente:\par
+Data da consulta: "15/12/2024"\par
+Hora da consulta: "14:00"\par
+M\'e9dico: "Dr. Jo\'e3o Pereira"\par
+Paciente: "Vitor Silva"\par
+Diagn\'f3stico: "Hipertens\'e3o"\par
+Prescri\'e7\'e3o de Medicamentos: "Medicamento X - 1x ao dia"\par
+\par
+O usu\'e1rio clica no bot\'e3o "Salvar".\par
+O sistema exibe a mensagem: "Consulta m\'e9dica gerada com sucesso".\par
+\b\par
+Fluxo Alternativo\par
+\b0 O usu\'e1rio tenta gerar a consulta, mas deixa um campo obrigat\'f3rio em branco (por exemplo, "Diagn\'f3stico") e clica em "Salvar".\par
+O sistema valida que o campo obrigat\'f3rio n\'e3o foi preenchido e exibe a mensagem de erro: "Favor preencher todos os campos obrigat\'f3rios".\par
+O usu\'e1rio corrige o erro, preenche o campo "Diagn\'f3stico" e clica novamente em "Salvar".\par
+O sistema exibe a mensagem: "Consulta m\'e9dica gerada com sucesso".\par
+\b\par
+Fluxo Negativo\par
+\b0 O usu\'e1rio insere o CPF do paciente corretamente:\par
+CPF do paciente: "870.087.340-34"\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao gerar a consulta m\'e9dica: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\ul\b\fs36 2. Registrar Diagn\'f3stico do Paciente\par
+\ulnone\fs28 Fluxo Principal\ul\b0\par
+\ulnone O usu\'e1rio inicia o sistema e acessa o menu para registrar o diagn\'f3stico do paciente.\par
+O sistema solicita o CPF do paciente.\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34"\par
+O sistema valida o CPF e encontra o paciente no banco de dados.\par
+O sistema exibe os dados do paciente:\par
+Nome: "Vitor Silva"\par
+CPF: "870.087.340-34"\par
+Data de nascimento: "02/11/2003"\par
+Hist\'f3rico m\'e9dico: "Hipertens\'e3o"\par
+Endere\'e7o: "Rua das Flores, 123"\par
+Telefone: "(11) 98765-4321"\par
+E-mail: "vitor.silva@gmail.com"\par
+\par
+O sistema solicita o diagn\'f3stico:\par
+Diagn\'f3stico: "Hipertens\'e3o arterial"\par
+\par
+O usu\'e1rio preenche o campo com o diagn\'f3stico correto e clica em "Salvar".\par
+O sistema exibe a mensagem: "Diagn\'f3stico registrado com sucesso".\par
+\b\par
+Fluxo Alternativo\par
+\b0 O usu\'e1rio tenta registrar o diagn\'f3stico, mas deixa o campo obrigat\'f3rio vazio (por exemplo, "Diagn\'f3stico") e clica em "Salvar".\par
+O sistema valida que o campo obrigat\'f3rio n\'e3o foi preenchido e exibe a mensagem de erro: "Favor preencher todos os campos obrigat\'f3rios".\par
+O usu\'e1rio corrige o erro, preenche o campo "Diagn\'f3stico" e clica novamente em "Salvar".\par
+O sistema exibe a mensagem: "Diagn\'f3stico registrado com sucesso".\par
+\b\par
+Fluxo Negativo\b0\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34"\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao registrar o diagn\'f3stico: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1 ------------------------------------------------------------------------------------------------------\cf0\par
+\ul\b\fs36 3. Registrar Prescri\'e7\'e3o de Medicamentos para o Paciente\ulnone\fs28\par
+Fluxo Principal\par
+\b0 O usu\'e1rio inicia o sistema e acessa o menu para registrar a prescri\'e7\'e3o de medicamentos do paciente.\par
+O sistema solicita o CPF do paciente.\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34"\par
+O sistema valida o CPF e encontra o paciente no banco de dados.\par
+O sistema exibe os dados do paciente:\par
+Nome: "Vitor Silva"\par
+CPF: "870.087.340-34"\par
+Data de nascimento: "02/11/2003"\par
+Hist\'f3rico m\'e9dico: "Hipertens\'e3o"\par
+Endere\'e7o: "Rua das Flores, 123"\par
+Telefone: "(11) 98765-4321"\par
+E-mail: "vitor.silva@gmail.com"\par
+\par
+O sistema solicita os dados da prescri\'e7\'e3o:\par
+\par
+Medicamento: "Medicamento X"\par
+Dosagem: "1 comprimido ao dia"\par
+Instru\'e7\'f5es: "Tomar ap\'f3s as refei\'e7\'f5es"\par
+Dura\'e7\'e3o: "30 dias"\par
+O usu\'e1rio preenche os campos corretamente e clica em "Salvar".\par
+O sistema exibe a mensagem: "Prescri\'e7\'e3o de medicamentos registrada com sucesso".\par
+\b\par
+Fluxo Alternativo\par
+\b0 O usu\'e1rio tenta registrar a prescri\'e7\'e3o, mas deixa um campo obrigat\'f3rio em branco (por exemplo, "Medicamento") e clica em "Salvar".\par
+O sistema valida que o campo obrigat\'f3rio n\'e3o foi preenchido e exibe a mensagem de erro: "Favor preencher todos os campos obrigat\'f3rios".\par
+O usu\'e1rio corrige o erro, preenche o campo "Medicamento" e clica novamente em "Salvar".\par
+O sistema exibe a mensagem: "Prescri\'e7\'e3o de medicamentos registrada com sucesso".\par
+\b\par
+Fluxo Negativo\par
+\b0 O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34"\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao registrar a prescri\'e7\'e3o de medicamentos: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\cf1\b\fs40 MEDICA\'c7\'c3O \cf0\b0\fs28\par
+\ul\b\fs36 1. Prescrever Medicamento para o Paciente\ulnone\b0\fs28\par
+\b Fluxo Principal\b0\par
+O usu\'e1rio inicia o sistema e acessa o menu para prescrever medicamento ao paciente.\par
+O sistema solicita o CPF do paciente.\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34"\par
+O sistema valida o CPF e encontra o paciente no banco de dados.\par
+O sistema exibe os dados do paciente:\par
+Nome: "Vitor Silva"\par
+CPF: "870.087.340-34"\par
+Data de nascimento: "02/11/2003"\par
+Hist\'f3rico m\'e9dico: "Hipertens\'e3o"\par
+Telefone: "(11) 98765-4321"\par
+E-mail: "vitor.silva@gmail.com"\par
+\par
+O sistema solicita os dados da prescri\'e7\'e3o:\par
+\par
+Medicamento: "Medicamento Z"\par
+Dosagem: "10 mg por dia"\par
+Frequ\'eancia: "2 vezes ao dia"\par
+Instru\'e7\'f5es adicionais: "Tomar ap\'f3s as refei\'e7\'f5es"\par
+Dura\'e7\'e3o: "7 dias"\par
+O usu\'e1rio preenche todos os campos corretamente e clica em "Salvar".\par
+O sistema exibe a mensagem: "Medicamento prescrito com sucesso".\par
+\par
+\b Fluxo Alternativo\b0\par
+O usu\'e1rio tenta prescrever o medicamento, mas preenche a frequ\'eancia com um valor inv\'e1lido (por exemplo, "ABC vezes ao dia") e clica em "Salvar".\par
+O sistema valida os campos e exibe a mensagem de erro: "Formato de frequ\'eancia inv\'e1lido".\par
+O usu\'e1rio corrige o erro, preenche a frequ\'eancia com "2 vezes ao dia" e clica novamente em "Salvar".\par
+O sistema exibe a mensagem: "Medicamento prescrito com sucesso".\par
+\par
+\b Fluxo Negativo\b0\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34"\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao prescrever medicamento: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\ul\b\fs36 2. Ajustar Dosagem do Medicamento do Paciente\ulnone\b0\fs28\par
+\b Fluxo Principal\par
+\b0 O usu\'e1rio inicia o sistema e acessa o menu para ajustar a dosagem de um medicamento prescrito ao paciente.\par
+O sistema solicita o CPF do paciente.\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34".\par
+O sistema valida o CPF e encontra o paciente no banco de dados.\par
+O sistema exibe os dados do paciente:\par
+\par
+Nome: "Vitor Silva"\par
+CPF: "870.087.340-34"\par
+Medicamento atual: "Medicamento Z"\par
+Dosagem atual: "10 mg por dia"\par
+O sistema solicita a nova dosagem para o medicamento:\par
+Nova dosagem: "15 mg por dia".\par
+\par
+O usu\'e1rio insere a nova dosagem corretamente e clica em "Salvar".\par
+O sistema exibe a mensagem: "Dosagem ajustada com sucesso".\par
+\b\par
+Fluxo Alternativo\par
+\b0 O usu\'e1rio tenta ajustar a dosagem, mas insere um valor inv\'e1lido (por exemplo, "15mgX").\par
+O sistema valida o campo e exibe a mensagem de erro: "Formato de dosagem inv\'e1lido".\par
+O usu\'e1rio corrige o erro, insere "15 mg por dia" e clica novamente em "Salvar".\par
+O sistema exibe a mensagem: "Dosagem ajustada com sucesso".\par
+\b\par
+Fluxo Negativo\par
+\b0 O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34".\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao ajustar a dosagem: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\par
+\cf0\b0\fs36\par
+\ul\b 3. Cancelar\f1  \f0 Prescri\'e7\'e3o\f1  \f0 de\f1  \f0 Medicamento\f1  \f0 do\f1  \f0 Paciente\ulnone\b0\par
+\b\fs28 Fluxo Principal\par
+\b0 O usu\'e1rio inicia o sistema e acessa o menu para cancelar a prescri\'e7\'e3o de um medicamento.\par
+O sistema solicita o CPF do paciente.\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34".\par
+O sistema valida o CPF e encontra o paciente no banco de dados.\par
+O sistema exibe os dados do paciente e as prescri\'e7\'f5es ativas:\par
+\par
+Nome: "Vitor Silva"\par
+CPF: "870.087.340-34"\par
+Medicamentos prescritos:\par
+Medicamento: "Medicamento Z"\par
+Dosagem: "10 mg por dia"\par
+Frequ\'eancia: "2 vezes ao dia"\par
+O sistema solicita a confirma\'e7\'e3o do medicamento a ser cancelado.\par
+O usu\'e1rio seleciona "Medicamento Z" e confirma o cancelamento clicando em "Cancelar Prescri\'e7\'e3o".\par
+O sistema registra o cancelamento e exibe a mensagem: "Prescri\'e7\'e3o de medicamento cancelada com sucesso".\par
+\b\par
+Fluxo Alternativo\par
+\b0 O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34".\par
+O sistema tenta realizar a consulta, mas ocorre um erro no processamento interno, e o sistema exibe a mensagem:\par
+"Erro ao carregar os dados. Tente novamente".\par
+\par
+O usu\'e1rio volta \'e0 tela inicial e realiza uma nova tentativa.\par
+Desta vez, o sistema processa corretamente e exibe os dados do paciente e as prescri\'e7\'f5es ativas:\par
+\par
+Nome: "Vitor Silva"\par
+CPF: "870.087.340-34"\par
+Medicamentos prescritos:\par
+Medicamento: "Medicamento Z"\par
+Dosagem: "10 mg por dia"\par
+Frequ\'eancia: "2 vezes ao dia"\par
+O usu\'e1rio seleciona "Medicamento Z" e confirma o cancelamento clicando em "Cancelar Prescri\'e7\'e3o".\par
+O sistema registra o cancelamento e exibe a mensagem: "Prescri\'e7\'e3o de medicamento cancelada com sucesso".\b\par
+Fluxo Negativo\par
+\b0 O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34".\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao cancelar a prescri\'e7\'e3o: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\par
+\cf0\par
+\ul\fs36 4. Consultar\f1  \f0 Medicamento\f1  \f0 Prescrito\f1  \f0 ao\f1  \f0 Paciente\ulnone\par
+\fs28 Fluxo\f1  \f0 Principal\b0\par
+O usu\'e1rio inicia o sistema e acessa o menu para consultar os medicamentos prescritos ao paciente.\par
+O sistema solicita o CPF do paciente.\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34".\par
+O sistema valida o CPF e encontra o paciente no banco de dados.\par
+O sistema exibe os dados do paciente:\par
+\par
+Nome: "Vitor Silva"\par
+CPF: "870.087.340-34"\par
+Medicamentos prescritos:\par
+Medicamento: "Medicamento Z"\par
+Dosagem: "10 mg por dia"\par
+Frequ\'eancia: "2 vezes ao dia"\par
+Dura\'e7\'e3o: "7 dias"\par
+Instru\'e7\'f5es: "Tomar ap\'f3s as refei\'e7\'f5es"\par
+O sistema exibe a mensagem: "Medicamentos prescritos consultados com sucesso".\par
+\par
+\b Fluxo Alternativo\b0\par
+O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34".\par
+O sistema tenta realizar a consulta, mas ocorre um erro no processamento interno, e o sistema exibe a mensagem:\par
+"Erro ao carregar os dados. Tente novamente".\par
+\par
+O usu\'e1rio volta \'e0 tela inicial e realiza uma nova tentativa.\par
+Desta vez, o sistema processa corretamente e exibe os dados do paciente e os medicamentos prescritos:\par
+\par
+Nome: "Vitor Silva"\par
+CPF: "870.087.340-34"\par
+Medicamentos prescritos:\par
+Medicamento: "Medicamento Z"\par
+Dosagem: "10 mg por dia"\par
+Frequ\'eancia: "2 vezes ao dia"\par
+Dura\'e7\'e3o: "7 dias"\par
+Instru\'e7\'f5es: "Tomar ap\'f3s as refei\'e7\'f5es"\par
+O sistema exibe a mensagem: "Medicamentos prescritos consultados com sucesso".\b\par
+Fluxo Negativo\par
+\b0 O usu\'e1rio insere o CPF corretamente:\par
+CPF: "870.087.340-34".\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro: "Erro ao consultar os medicamentos prescritos: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\b0\par
+\b\fs40 DISPOSITIVO DE MONITORAMENTO \b0\fs28\par
+\cf0\ul\b\fs36 1. Cadastrar dispositivo\ulnone\b0\fs28\par
+\b Fluxo\f1  \f0 Principal\b0\par
+Acessar\f1  \f0 a\f1  \f0 tela\f1  \f0 "Cadastrar\f1  \f0 Dispositivo"\f1 .\f0\par
+Digitar\f1  \f0 o\f1  \f0 CPF\f1  \f0 do\f1  \f0 paciente\f1  \f0 no\f1  \f0 campo\f1  \f0 de\f1  \f0 busca\f1 :\f0\par
+CPF\f1 : \f0 "12345678901"\f1 .\f0\par
+Clicar\f1  \f0 no\f1  \f0 bot\'e3o\f1  \f0 "Pesquisar"\f1  \f0 ou\f1  \f0 pressionar\f1  \f0 "Enter"\f1 .\f0\par
+O\f1  \f0 sistema\f1  \f0 exibe\f1  \f0 as\f1  \f0 informa\'e7\'f5es\f1  \f0 do\f1  \f0 paciente\f1 :\f0\par
+Nome\f1 : \f0 "Vitor\f1  \f0 Rech"\f1 .\f0\par
+Selecionar\f1  \f0 a\f1  \f0 op\'e7\'e3o\f1  \f0 para\f1  \f0 adicionar\f1  \f0 um\f1  \f0 dispositivo\f1  \f0 de\f1  \f0 monitoramento\f1 .\f0\par
+Preencher\f1  \f0 os\f1  \f0 dados\f1  \f0 do\f1  \f0 dispositivo\f1  \f0 a\f1  \f0 ser\f1  \f0 cadastrado\f1 :\f0\par
+Tipo\f1  \f0 de\f1  \f0 dispositivo\f1 : \f0 "Monitore\f1  \f0 de\f1  \f0 glicemia"\f1 .\f0\par
+Modelo\f1 : \f0 "Glucometer\f1  \f0 Plus"\f1 .\f0\par
+Data\f1  \f0 de\f1  \f0 instala\'e7\'e3o\f1 : \f0 "17\f1 /\f0 11\f1 /\f0 2024"\f1 .\f0\par
+Frequ\'eancia\f1  \f0 de\f1  \f0 uso\f1 : \f0 "2\f1  \f0 vezes\f1  \f0 ao\f1  \f0 dia"\f1 .\f0\par
+Clicar\f1  \f0 no\f1  \f0 bot\'e3o\f1  \f0 "Cadastrar\f1  \f0 Dispositivo"\f1 .\f0\par
+O\f1  \f0 sistema\f1  \f0 exibe\f1  \f0 a\f1  \f0 mensagem\f1 : \f0 "Dispositivo\f1  \f0 cadastrado\f1  \f0 com\f1  \f0 sucesso"\f1 .\f0\par
+Validar\f1  \f0 que\f1  \f0 o\f1  \f0 dispositivo\f1  \f0 aparece\f1  \f0 na\f1  \f0 lista\f1  \f0 de\f1  \f0 dispositivos\f1  \f0 associados\f1  \f0 ao\f1  \f0 paciente\f1 .\f0\par
+\b Fluxo\f1  \f0 Alternativo\b0\par
+Cadastrar\f1  \f0 um\f1  \f0 dispositivo\f1  \f0 diferente\f1  (\f0 ex\f1 .: \f0 "Monitor\f1  \f0 de\f1  \f0 press\'e3o\f1  \f0 arterial"\f1 ).\f0\par
+Cadastrar\f1  \f0 um\f1  \f0 dispositivo\f1  \f0 com\f1  \f0 uma\f1  \f0 frequ\'eancia\f1  \f0 de\f1  \f0 uso\f1  \f0 maior\f1 , \f0 como\f1  \f0 "4\f1  \f0 vezes\f1  \f0 ao\f1  \f0 dia"\f1 .\f0\par
+Cadastrar\f1  \f0 um\f1  \f0 dispositivo\f1  \f0 e\f1  \f0 adicionar\f1  \f0 uma\f1  \f0 observa\'e7\'e3o\f1  \f0 sobre\f1  \f0 o\f1  \f0 uso\f1 , \f0 como\f1  \f0 "Uso\f1  \f0 recomendado\f1  \f0 ap\'f3s\f1  \f0 as\f1  \f0 refei\'e7\'f5es"\f1 .\f0\par
+\b Fluxo\f1  \f0 Negativo\b0\par
+Tentar\f1  \f0 cadastrar\f1  \f0 um\f1  \f0 dispositivo\f1  \f0 para\f1  \f0 um\f1  \f0 paciente\f1  \f0 inexistente\f1  (\f0 CPF\f1  \f0 n\'e3o\f1  \f0 cadastrado\f1 ):\f0\par
+CPF\f1 : \f0 "00000000000"\f1 .\f0\par
+Validar\f1  \f0 que\f1  \f0 o\f1  \f0 sistema\f1  \f0 exibe\f1  \f0 a\f1  \f0 mensagem\f1 : \f0 "Paciente\f1  \f0 n\'e3o\f1  \f0 encontrado"\f1 .\f0\par
+Deixar\f1  \f0 os\f1  \f0 campos\f1  \f0 obrigat\'f3rios\f1  \f0 em\f1  \f0 branco\f1  \f0 e\f1  \f0 clicar\f1  \f0 em\f1  \f0 "Cadastrar\f1  \f0 Dispositivo"\f1 .\f0\par
+Validar\f1  \f0 que\f1  \f0 o\f1  \f0 sistema\f1  \f0 exibe\f1  \f0 a\f1  \f0 mensagem\f1  \f0 de\f1  \f0 erro\f1 : \f0 "Preencha\f1  \f0 todos\f1  \f0 os\f1  \f0 campos\f1  \f0 obrigat\'f3rios"\f1 .\f0\par
+Inserir\f1  \f0 um\f1  \f0 tipo\f1  \f0 de\f1  \f0 dispositivo\f1  \f0 inv\'e1lido\f1  (\f0 ex\f1 .: \f0 "DispositivoXYZ"\f1 ) \f0 e\f1  \f0 tentar\f1  \f0 cadastrar\f1 .\f0\par
+Validar\f1  \f0 que\f1  \f0 o\f1  \f0 sistema\f1  \f0 exibe\f1  \f0 a\f1  \f0 mensagem\f1  \f0 de\f1  \f0 erro\f1 : \f0 "Dispositivo\f1  \f0 inv\'e1lido"\f1 .\f0\par
+Tentar\f1  \f0 cadastrar\f1  \f0 um\f1  \f0 dispositivo\f1  \f0 para\f1  \f0 um\f1  \f0 paciente\f1  \f0 sem\f1  \f0 a\f1  \f0 permiss\'e3o\f1  \f0 necess\'e1ria\f1  \f0 e\f1  \f0 verificar\f1  \f0 se\f1  \f0 o\f1  \f0 sistema\f1  \f0 exibe\f1  \f0 a\f1  \f0 mensagem\f1 : \f0 "Acesso\f1  \f0 n\'e3o\f1  \f0 autorizado"\f1 .\f0\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\b\fs36  2. \ul Visualizar Dispositivo\ulnone\b0\fs28\par
+\b Fluxo Principal\b0\par
+Acessar a tela "Visualizar Dispositivo".\par
+Digitar o CPF do paciente no campo de busca:\par
+CPF: "12345678901".\par
+Clicar no bot\'e3o "Pesquisar" ou pressionar "Enter".\par
+O sistema exibe as informa\'e7\'f5es do paciente e seus dispositivos cadastrados:\par
+Nome: "Vitor Rech".\par
+Dispositivos:\par
+"Monitore de glicemia", modelo "Glucometer Plus", frequ\'eancia "2 vezes ao dia".\par
+Selecionar o dispositivo desejado para visualizar detalhes:\par
+Tipo de dispositivo: "Monitore de glicemia".\par
+Frequ\'eancia de uso: "2 vezes ao dia".\par
+Validar se as informa\'e7\'f5es do dispositivo est\'e3o corretas.\par
+\b Fluxo Alternativo\b0\par
+Visualizar dispositivos de pacientes com m\'faltiplos dispositivos cadastrados (ex.: "Monitore de glicemia" e "Monitor de press\'e3o arterial").\par
+Visualizar um dispositivo e adicionar um hist\'f3rico de monitoramento (ex.: "\'daltima leitura de glicemia: 120 mg/dL").\par
+\b Fluxo Negativo\b0\par
+Tentar visualizar dispositivos para um paciente inexistente (CPF n\'e3o cadastrado):\par
+CPF: "00000000000".\par
+Validar que o sistema exibe a mensagem: "Paciente n\'e3o encontrado".\par
+Tentar visualizar dispositivos sem ter cadastro de dispositivos no sistema e verificar se o sistema exibe a mensagem: "Nenhum dispositivo cadastrado".\par
+Tentar visualizar dispositivos de um paciente sem a permiss\'e3o necess\'e1ria e verificar se o sistema exibe a mensagem: "Acesso n\'e3o autorizado".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\par
+\cf0\ul\fs36 3. Remover Dispositivo\ulnone\b0\fs28\par
+\b Fluxo Principal\b0\par
+Acessar a tela "Remover Dispositivo".\par
+Digitar o CPF do paciente no campo de busca:\par
+CPF: "12345678901".\par
+Clicar no bot\'e3o "Pesquisar" ou pressionar "Enter".\par
+O sistema exibe as informa\'e7\'f5es do paciente e seus dispositivos cadastrados:\par
+Nome: "Vitor Rech".\par
+Dispositivos:\par
+"Monitore de glicemia", modelo "Glucometer Plus", frequ\'eancia "2 vezes ao dia".\par
+Selecionar o dispositivo a ser removido:\par
+Dispositivo: "Monitore de glicemia".\par
+Clicar no bot\'e3o "Remover Dispositivo".\par
+O sistema exibe a mensagem: "Dispositivo removido com sucesso".\par
+Validar que o dispositivo foi removido da lista de dispositivos associados ao paciente.\par
+\b Fluxo Alternativo\b0\par
+Remover mais de um dispositivo para o paciente, caso haja mais de um dispositivo cadastrado.\par
+Remover um dispositivo e registrar a raz\'e3o, como "Dispositivo danificado".\par
+\b Fluxo Negativo\b0\par
+Tentar remover um dispositivo para um paciente inexistente (CPF n\'e3o cadastrado):\par
+CPF: "00000000000".\par
+Validar que o sistema exibe a mensagem: "Paciente n\'e3o encontrado".\par
+Tentar remover um dispositivo que n\'e3o est\'e1 cadastrado e verificar se o sistema exibe a mensagem: "Dispositivo n\'e3o encontrado".\par
+Tentar remover um dispositivo sem as permiss\'f5es adequadas e verificar se o sistema exibe a mensagem: "A\'e7\'e3o n\'e3o permitida".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\cf1\b\fs40 MONITORA\'c7\'c3O\cf0\b0\fs28\par
+ \ul\b\fs36 1. Monitorar Dados de Sa\'fade do Paciente\ulnone\b0\fs28\par
+\b Fluxo Principal\par
+\b0 O usu\'e1rio chama o Alerta e mostra:\par
+Press\'e3o arterial: "120/80 mmHg"\par
+Frequ\'eancia card\'edaca: "72 bpm"\par
+Temperatura corporal: "36,5\'b0C"\par
+N\'edvel de glicose: "90 mg/dL"\par
+O sistema exibe a mensagem: "Dados de sa\'fade monitorados com sucesso".\par
+\b Fluxo Alternativo\par
+\b0 O usu\'e1rio aperta o bot\'e3o de alerta:\par
+O sistema tenta realizar a consulta, mas ocorre um erro no processamento interno, e o sistema exibe a mensagem:\par
+"Erro ao carregar os dados de sa\'fade. Tente novamente".\par
+O usu\'e1rio volta \'e0 tela inicial e realiza uma nova tentativa.\par
+Desta vez, o sistema processa corretamente e exibe os dados monitorados do paciente:\par
+Press\'e3o arterial: "120/80 mmHg"\par
+Frequ\'eancia card\'edaca: "72 bpm"\par
+Temperatura corporal: "36,5\'b0C"\par
+N\'edvel de glicose: "90 mg/dL"\par
+O sistema exibe a mensagem: "Dados de sa\'fade monitorados com sucesso".\par
+\b Fluxo Negativo\b0\par
+O usu\'e1rio chama o Alerta:\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro:\par
+"Erro ao monitorar os dados de sa\'fade: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\ul\b\fs36  2. Visualizar Dados Monitorados do Paciente\ulnone\b0\fs28\par
+\b Fluxo Principal\par
+\b0 O usu\'e1rio inicia o sistema e acessa o menu de visualiza\'e7\'e3o dos dados monitorados do paciente.\par
+O sistema exibe os dados monitorados do paciente:\par
+Nome: "Vitor Silva"\par
+Press\'e3o arterial: "120/80 mmHg"\par
+Frequ\'eancia card\'edaca: "72 bpm"\par
+Temperatura corporal: "36,5\'b0C"\par
+N\'edvel de glicose: "90 mg/dL"\par
+O sistema exibe a mensagem: "Dados monitorados visualizados com sucesso".\par
+\b Fluxo Alternativo\par
+\b0 O usu\'e1rio insere o nome corretamente:\par
+O sistema tenta realizar a consulta, mas ocorre um erro no processamento interno, e o sistema exibe a mensagem:\par
+"Erro ao carregar os dados monitorados. Tente novamente".\par
+O usu\'e1rio volta \'e0 tela inicial e realiza uma nova tentativa.\par
+Desta vez, o sistema processa corretamente e exibe os dados monitorados do paciente:\par
+Nome: "Vitor Silva"\par
+Press\'e3o arterial: "120/80 mmHg"\par
+Frequ\'eancia card\'edaca: "72 bpm"\par
+Temperatura corporal: "36,5\'b0C"\par
+N\'edvel de glicose: "90 mg/dL"\par
+O sistema exibe a mensagem: "Dados monitorados visualizados com sucesso".\par
+\b Fluxo Negativo\par
+\b0 O usu\'e1rio insere o nome:\par
+O sistema realiza a busca, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro:\par
+"Erro ao visualizar os dados monitorados: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\par
+\cf0\ul\fs36  3\b0 . \b Gerar Alerta do Paciente\ulnone\b0\fs28\par
+\b Fluxo Principal\par
+\par
+\b0 O usu\'e1rio inicia o sistema e acessa o menu de gera\'e7\'e3o de alerta do paciente.\par
+O sistema solicita o nome do paciente\par
+O sistema valida o nome e encontra o paciente no banco de dados.\par
+O sistema exibe os dados do paciente e solicita a informa\'e7\'e3o do tipo de alerta.\par
+O usu\'e1rio escolhe o tipo de alerta:\par
+Tipo de alerta: "Press\'e3o alta".\par
+O sistema gera o alerta e exibe a mensagem: "Alerta gerado com sucesso".\par
+O sistema registra o alerta no banco de dados, associando-o ao paciente.\par
+O sistema exibe o alerta gerado:\par
+Nome: "Vitor Silva"\par
+Tipo de alerta: "Press\'e3o alta"\par
+Data e hora do alerta: "04/12/2024 14:30"\par
+O sistema exibe a mensagem: "Alerta gerado e registrado com sucesso".\par
+\b Fluxo Alternativo\par
+\b0 O usu\'e1rio insere o nome:\par
+O sistema tenta gerar o alerta, mas ocorre um erro no processamento interno, e o sistema exibe a mensagem:\par
+"Erro ao gerar alerta. Tente novamente".\par
+O usu\'e1rio volta \'e0 tela inicial e realiza uma nova tentativa.\par
+Desta vez, o sistema processa corretamente e gera o alerta com sucesso, exibindo os dados:\par
+Nome: "Vitor Silva"\par
+Tipo de alerta: "Press\'e3o alta"\par
+Data e hora do alerta: "04/12/2024 14:30"\par
+O sistema exibe a mensagem: "Alerta gerado e registrado com sucesso".\par
+\b Fluxo Negativo\par
+\b0 Nome: "Vitor Silva"\par
+O sistema tenta gerar o alerta, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro:\par
+"Erro ao gerar o alerta: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\ul\b\fs36 4. Analisar Monitora\'e7\'e3o do Paciente\ulnone\fs28\par
+Fluxo Principal\b0\par
+\par
+O usu\'e1rio inicia o sistema e acessa o menu de an\'e1lise da monitora\'e7\'e3o do paciente.\par
+O sistema solicita o nome do paciente\par
+O usu\'e1rio insere o nome:\par
+Nome: Vitor Silva\par
+O sistema valida o nome encontra o paciente no banco de dados.\par
+O sistema exibe os dados monitorados do paciente:\par
+Nome: "Vitor Silva"\par
+Press\'e3o arterial: "120/80 mmHg"\par
+Frequ\'eancia card\'edaca: "72 bpm"\par
+Temperatura corporal: "36,5\'b0C"\par
+N\'edvel de glicose: "90 mg/dL"\par
+O sistema solicita a an\'e1lise dos dados e o tipo de interven\'e7\'e3o (se necess\'e1rio).\par
+O usu\'e1rio escolhe o tipo de an\'e1lise:\par
+Tipo de an\'e1lise: "Monitoramento completo".\par
+O sistema processa a an\'e1lise, verifica os dados e exibe as conclus\'f5es.\par
+O sistema exibe a mensagem:\par
+"An\'e1lise conclu\'edda com sucesso. Dados dentro da faixa normal".\par
+O sistema gera um relat\'f3rio detalhado com as conclus\'f5es da an\'e1lise, e o usu\'e1rio pode visualizar ou salvar o relat\'f3rio.\par
+\b Fluxo Alternativo\b0\par
+O usu\'e1rio insere o nome:\par
+O sistema tenta realizar a an\'e1lise, mas ocorre um erro no processamento interno e o sistema exibe a mensagem:\par
+"Erro ao processar a an\'e1lise. Tente novamente".\par
+O usu\'e1rio volta \'e0 tela inicial e realiza uma nova tentativa.\par
+Desta vez, o sistema processa corretamente e exibe a mensagem:\par
+"An\'e1lise conclu\'edda com sucesso. Dados dentro da faixa normal".\par
+O sistema exibe o relat\'f3rio detalhado e permite que o usu\'e1rio visualize ou salve.\par
+\b Fluxo Negativo\b0\par
+O usu\'e1rio insere o nome:\par
+O sistema realiza a consulta, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro:\par
+"Erro ao analisar a monitora\'e7\'e3o do paciente: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\par
+\cf1\b\fs40 ALERTA\cf0\b0\fs28\par
+\ul\b\fs36 1. Gerar Alerta\ulnone\b0\fs28\par
+\b Fluxo Principal\par
+\par
+\b0 O usu\'e1rio inicia o sistema e acessa o menu de gera\'e7\'e3o de alerta.\par
+O sistema solicita o nome do paciente:\par
+O usu\'e1rio insere o nome\par
+Nome: Vitor Silva\par
+O sistema valida o nome encontra o paciente no banco de dados.\par
+O sistema exibe os dados do paciente e solicita a informa\'e7\'e3o do tipo de alerta.\par
+O usu\'e1rio escolhe o tipo de alerta:\par
+Tipo de alerta: "Press\'e3o alta".\par
+O sistema gera o alerta e exibe a mensagem: "Alerta gerado com sucesso".\par
+O sistema registra o alerta no banco de dados, associando-o ao paciente.\par
+O sistema exibe os dados do alerta gerado:\par
+Nome: "Vitor Silva"\par
+Tipo de alerta: "Press\'e3o alta"\par
+Data e hora do alerta: "04/12/2024 14:30"\par
+O sistema exibe a mensagem: "Alerta gerado e registrado com sucesso".\par
+\b Fluxo Alternativo\par
+\b0 O usu\'e1rio insere o nome:\par
+Nome: Vitor Silva\par
+O sistema tenta gerar o alerta, mas ocorre um erro no processamento interno e o sistema exibe a mensagem:\par
+"Erro ao gerar alerta. Tente novamente".\par
+O usu\'e1rio volta \'e0 tela inicial e realiza uma nova tentativa.\par
+Desta vez, o sistema processa corretamente e gera o alerta com sucesso, exibindo os dados:\par
+Nome: "Vitor Silva"\par
+Tipo de alerta: "Press\'e3o alta"\par
+Data e hora do alerta: "04/12/2024 14:30"\par
+O sistema exibe a mensagem: "Alerta gerado e registrado com sucesso".\par
+\b Fluxo Negativo\par
+\b0 O usu\'e1rio insere o nome:\par
+Nome: Vitor Silva\par
+O sistema tenta gerar o alerta, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro:\par
+"Erro ao gerar o alerta: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde."\par
+\b .\cf1 ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\ul\b\fs36 2. Encerrar Alerta\ulnone\b0\fs28\par
+\ul\b Fluxo Principal\ulnone\b0\par
+\par
+O usu\'e1rio inicia o sistema e acessa o menu de encerramento de alerta.\par
+O sistema solicita o nome do paciente.\par
+O usu\'e1rio insere o nome:\par
+Nome: Vitor Silva\par
+O sistema valida o nome e encontra o paciente no banco de dados.\par
+O sistema exibe os alertas ativos do paciente.\par
+O usu\'e1rio seleciona o alerta que deseja encerrar:\par
+Tipo de alerta: "Press\'e3o alta".\par
+O sistema confirma o encerramento do alerta e exibe a mensagem: "Alerta encerrado com sucesso".\par
+O sistema registra o encerramento do alerta no banco de dados e desassocia o alerta do paciente.\par
+O sistema exibe os dados do alerta encerrado:\par
+Nome: "Vitor Silva"\par
+Tipo de alerta: "Press\'e3o alta"\par
+Data e hora do encerramento: "04/12/2024 15:00"\par
+O sistema exibe a mensagem: "Alerta encerrado com sucesso".\par
+\b Fluxo Alternativo\b0\par
+O usu\'e1rio insere o nome:\par
+Nome: Vitor Silva\par
+O sistema tenta encerrar o alerta, mas ocorre um erro no processamento interno e o sistema exibe a mensagem:\par
+"Erro ao encerrar alerta. Tente novamente".\par
+O usu\'e1rio volta \'e0 tela inicial e realiza uma nova tentativa.\par
+Desta vez, o sistema processa corretamente e exibe a mensagem:\par
+"Alerta encerrado com sucesso".\par
+O sistema exibe os dados do alerta encerrado:\par
+Nome: "Vitor Silva"\par
+Tipo de alerta: "Press\'e3o alta"\par
+Data e hora do encerramento: "04/12/2024 15:00"\par
+\b Fluxo Negativo\b0\par
+O usu\'e1rio insere o nome:\par
+Nome: Vitor Silva\par
+O sistema tenta encerrar o alerta, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro:\par
+"Erro ao encerrar o alerta: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\cf1\b ------------------------------------------------------------------------------------------------------\cf0\b0\par
+\ul\b\fs36  3. Visualizar Alertas\b0\fs28\par
+\b Fluxo Principal\ulnone\b0\par
+\par
+O usu\'e1rio inicia o sistema e acessa o menu de visualiza\'e7\'e3o de alertas.\par
+O sistema solicita o nome do paciente.\par
+O usu\'e1rio insere o nome:\par
+Nome: Vitor Silva\par
+O sistema valida o nome e encontra o paciente no banco de dados.\par
+O sistema exibe a lista de alertas ativos do paciente.\par
+O sistema exibe os seguintes dados dos alertas:\par
+Nome: "Vitor Silva"\par
+Tipo de alerta: "Press\'e3o alta"\par
+Data e hora do alerta: "04/12/2024 14:30"\par
+O usu\'e1rio pode visualizar detalhes sobre o alerta.\par
+O sistema exibe as informa\'e7\'f5es detalhadas do alerta:\par
+Tipo de alerta: "Press\'e3o alta"\par
+Data e hora do alerta: "04/12/2024 14:30"\par
+Status: "Ativo"\par
+O sistema exibe a mensagem: "Alertas do paciente visualizados com sucesso".\par
+\b Fluxo Alternativo\b0\par
+O usu\'e1rio insere o nome do paciente:\par
+Nome: Vitor Silva\par
+O sistema tenta carregar os alertas, mas ocorre um erro no processamento interno e o sistema exibe a mensagem:\par
+"Erro ao carregar os alertas. Tente novamente".\par
+O usu\'e1rio volta \'e0 tela inicial e realiza uma nova tentativa.\par
+Desta vez, o sistema carrega os alertas corretamente e exibe os dados do alerta:\par
+Nome: "Vitor Silva"\par
+Tipo de alerta: "Press\'e3o alta"\par
+Data e hora do alerta: "04/12/2024 14:30"\par
+O sistema exibe a mensagem: "Alertas do paciente visualizados com sucesso".\par
+\b Fluxo Negativo\b0\par
+O usu\'e1rio insere o nome:\par
+Nome: Vitor Silva\par
+O sistema tenta carregar os alertas, mas o banco de dados est\'e1 indispon\'edvel ou ocorre um problema de rede.\par
+O sistema captura a exce\'e7\'e3o e exibe a mensagem de erro:\par
+"Erro ao carregar os alertas: o sistema n\'e3o conseguiu acessar o banco de dados. Tente novamente mais tarde.".\par
+\par
+\par
+}
+ 
