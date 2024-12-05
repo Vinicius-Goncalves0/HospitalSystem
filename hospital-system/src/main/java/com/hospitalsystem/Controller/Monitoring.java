@@ -18,6 +18,12 @@ public class Monitoring {
     private PatientDAO patientDAO;
     private AlertDAO alertDAO;
 
+    public Monitoring(DeviceDAO deviceDAO, PatientDAO patientDAO, AlertDAO alertDAO) {
+        this.deviceDAO = new DeviceDAO();
+        this.patientDAO = new PatientDAO();
+        this.alertDAO = new AlertDAO();
+    }
+
     public Monitoring() {
         this.deviceDAO = new DeviceDAO();
         this.patientDAO = new PatientDAO();
@@ -39,22 +45,22 @@ public class Monitoring {
                     int patientId = deviceDAO.getPatientIdByDeviceId(device.getId());
                     Patient patient = patientDAO.findPatientById(patientId);
 
-                    String mensagem = String.format(
+                    String message = String.format(
                             "Patient %s, has a record of %d which is %s of the recommended %s of %d.",
                             patient.getName(), value,
                             (value > alertValueMax ? "above" : "below"),
                             (value > alertValueMax ? "maximum value" : "minimum value"),
                             (value > alertValueMax ? alertValueMax : alertValueMin));
 
-                    if (!alertDAO.alertExists(mensagem, device.getType())) {
+                    if (!alertDAO.alertExists(message, device.getType())) {
                         LocalDateTime now = LocalDateTime.now();
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                         String formattedDate = now.format(formatter);
 
-                        Alert alert = new Alert(device.getType(), mensagem, "Automatically generated alert", formattedDate);
+                        Alert alert = new Alert(device.getType(), message, "Automatically generated alert", formattedDate);
                         alertDAO.generateAlert(alert, device, patient);
 
-                        System.out.println("Alert generated: " + mensagem);
+                        System.out.println("Alert generated: " + message);
                     }
                 }
             }

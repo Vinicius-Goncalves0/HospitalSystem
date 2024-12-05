@@ -1,6 +1,5 @@
 package com.hospitalsystem.Controller.db_Connections;
 
-import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
@@ -20,6 +19,7 @@ public class AlertDAOTest {
     Alert alert;
     Device device;
     Patient patient;
+    List<Alert> alerts;
 
     AlertDAO alertDAO;
 
@@ -31,6 +31,7 @@ public class AlertDAOTest {
         this.patient = new Patient("name", "CPF", "birthDate", "address", "phone", "email", "histories");
 
         this.alertDAO = new AlertDAO();
+        alerts = alertDAO.listAllAlerts();
     }
     
 
@@ -40,7 +41,12 @@ public class AlertDAOTest {
     }
 
     @Test
-    public void deleteAlertById() throws SQLException {
+    public void testDeleteAlertById() throws SQLException {
         assertDoesNotThrow(() -> alertDAO.deleteAlertById(1));
+    }
+
+    @Test
+    public void testListAllAlerts() throws SQLException {
+        assertTrue(alerts.size() > 0);
     }
 }

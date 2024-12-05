@@ -63,6 +63,26 @@ public class MedicationDAO {
         }
     }
 
+    // Update medication
+    public void updateMedication(Medication medication) {
+        String sql = "UPDATE medications SET name = ?, dosage = ?, frequency = ?, description = ?, doctor = ?, prescription_date = ? WHERE id = ?";
+
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, medication.getMedicationName());
+            stmt.setString(2, medication.getDosage());
+            stmt.setString(3, medication.getFrequency());
+            stmt.setString(4, medication.getDescription());
+            stmt.setString(5, medication.getDoctor());
+            stmt.setString(6, medication.getPrescriptionDate());
+            stmt.setInt(7, medication.getId());
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     // List medications from a patient
     public List<Medication> listMedicationsByPatientName(String patientName) throws SQLException {
         List<Medication> medications = new ArrayList<>();
@@ -126,6 +146,33 @@ public class MedicationDAO {
             throw new SQLException("Error listing medications: " + e.getMessage());
         }
     
+        return medications;
+    }
+
+    // List all medications
+    public List<Medication> listAllMedications() throws SQLException {
+        List<Medication> medications = new ArrayList<>();
+        String sql = "SELECT * FROM hospital_system.medications";
+
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Medication medication = new Medication(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("dosage"),
+                        rs.getString("frequency"),
+                        rs.getString("description"),
+                        rs.getString("doctor"),
+                        rs.getString("prescription_date"));
+                medications.add(medication);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("Error listing medications: " + e.getMessage());
+        }
+
         return medications;
     }
 

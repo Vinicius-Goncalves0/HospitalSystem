@@ -30,4 +30,8 @@ public class MedicationController {
     public void deletePatientMedication(String patientName, int medicationId) throws SQLException {
         medicationDAO.deletePatientMedication(patientName, medicationId);
     }
+
+    public void updateMedication(Medication medication) throws SQLException {
+        medicationDAO.updateMedication(medication);
+    }
 }

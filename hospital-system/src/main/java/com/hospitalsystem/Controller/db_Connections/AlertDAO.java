@@ -207,8 +207,9 @@ public class AlertDAO {
                 Alert alert = new Alert(id, type, message, doctor, data);
                 alerts.add(alert);
             }
+        } catch (SQLException e) {
+            throw e;
         }
-
         return alerts;
     }
 

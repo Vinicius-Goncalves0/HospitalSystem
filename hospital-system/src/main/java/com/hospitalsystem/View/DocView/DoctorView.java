@@ -79,7 +79,7 @@ public class DoctorView {
         while (true) {
             System.out.print("\n=== Doctor: " + doctor.getName() + " ===\n");
             System.out.println("1. Doctor Data Menu");
-            System.out.println("2. Patient Secion");
+            System.out.println("2. Patient Menu");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
 

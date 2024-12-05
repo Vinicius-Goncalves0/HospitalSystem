@@ -126,6 +126,36 @@ public class DeviceDAO {
         return devices;
     }
 
+    //List all devices
+    public List<Device> listAllDevices() throws SQLException {
+        String sql = "SELECT * FROM devices";
+        List<Device> devices = new ArrayList<>();
+
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Device device = new Device(
+                        rs.getInt("id"),
+                        rs.getString("type"),
+                        rs.getString("brand"),
+                        rs.getString("model"),
+                        rs.getBoolean("activationStatus"),
+                        rs.getInt("value"),
+                        rs.getInt("alertValueMax"),
+                        rs.getInt("alertValueMin")
+                );
+                devices.add(device);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("Error listing devices: " + e.getMessage());
+        }
+
+        return devices;
+    }
+
     // List inactive devices from a patient
     public List<Device> listInactiveDevicesByPatientName(String patientName) throws SQLException {
         return listDevicesByPatientName(patientName).stream()

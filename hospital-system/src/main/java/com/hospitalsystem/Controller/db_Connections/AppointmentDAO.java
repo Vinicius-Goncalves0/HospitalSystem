@@ -73,8 +73,30 @@ public class AppointmentDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-            throw new SQLException("Error listing appointments: " + e.getMessage());
+            throw e;
+        }
+
+        return appointments;
+    }
+
+    // List all appointments
+    public List<Appointment> listAllAppointments() throws SQLException {
+        List<Appointment> appointments = new ArrayList<>();
+        String sql = "SELECT * FROM appointments";
+
+        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Appointment appointment = new Appointment(
+                        rs.getInt("id"),
+                        rs.getString("appointment_date_time"),
+                        rs.getString("doctor"),
+                        rs.getString("diagnosis"));
+                appointments.add(appointment);
+            }
+        } catch (SQLException e) {
+            throw e;
         }
 
         return appointments;
@@ -83,26 +105,27 @@ public class AppointmentDAO {
     // Check if an appointment belongs to a patient
     public boolean isAppointmentOwnedByPatient(String patientName, int appointmentId) throws SQLException {
         String sql = "SELECT COUNT(*) AS count " +
-                     "FROM hospital_system.patients p " +
-                     "JOIN hospital_system.appointments a ON p.id = a.patient_id " +
-                     "WHERE p.name = ? AND a.id = ?";
+                 "FROM hospital_system.patients p " +
+                 "JOIN hospital_system.patient_appointments pa ON p.id = pa.patient_id " +
+                 "JOIN hospital_system.appointments a ON pa.appointment_id = a.id " +
+                 "WHERE p.name = ? AND a.id = ?";
 
-        try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, patientName);
-            stmt.setInt(2, appointmentId);
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getInt("count") > 0;
-                }
+    try (Connection conn = db_Connection.getConnection(Main.getDataBaseMode());
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setString(1, patientName);
+        stmt.setInt(2, appointmentId);
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt("count") > 0;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new SQLException("Error checking appointment ownership: " + e.getMessage());
         }
-
-        return false;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        throw new SQLException("Error checking appointment ownership: " + e.getMessage());
     }
+
+    return false;
+}
 
     // Delete appointment from a patient
     public void deletePatientAppointmentById(String patientName, int appointmentId) throws SQLException {

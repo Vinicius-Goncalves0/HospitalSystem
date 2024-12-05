@@ -16,6 +16,7 @@ import com.hospitalsystem.View.List.ListPatientAppointmentMenu;
 import com.hospitalsystem.View.List.ListPatientMedicationMenu;
 import com.hospitalsystem.View.List.ListPatients;
 import com.hospitalsystem.View.Update.UpdatePatientMenu;
+import com.hospitalsystem.View.Update.UpdateMedicationMenu;
 
 public class DocPatientView {
 
@@ -169,12 +170,14 @@ public class DocPatientView {
         CreateMedicationMenu createMedicationMenu = new CreateMedicationMenu();
         ListPatientMedicationMenu listPatientMedicationMenu = new ListPatientMedicationMenu();
         DeletePatientMedication deletePatientMedication = new DeletePatientMedication();
+        UpdateMedicationMenu updateMedicationMenu = new UpdateMedicationMenu();
 
         while (true) {
             System.out.print("\n=== Patient: " + patient.getName() + " ===\n");
             System.out.println("1. Add Medication");
             System.out.println("2. Consult Medication");
             System.out.println("3. Delete Medication");
+            System.out.println("4. Update Medication");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
 
@@ -196,6 +199,9 @@ public class DocPatientView {
                     case 3:
                         deletePatientMedication.deleteMedication(patientName);
                         break;
+                    case 4:
+                        updateMedicationMenu.updateMedication();
+                        break;  
                     default:
                         System.out.println("Invalid choice. Please try again.");
                 }
