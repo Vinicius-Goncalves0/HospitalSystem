@@ -7,6 +7,11 @@ import com.hospitalsystem.Controller.db_Connections.DoctorDAO;
 import com.hospitalsystem.Model.Doctor;
 
 public class CreateDoctorMenu {
+
+    public DoctorDAO createDoctorDAO() {
+        return new DoctorDAO();
+    }
+
     Scanner scan = new Scanner(System.in);
 
     public void createDoctorMenu() {

@@ -3,12 +3,14 @@ package com.hospitalsystem.View.Update;
 import java.util.Scanner;
 import java.sql.SQLException;
 
+import com.hospitalsystem.Controller.DeviceController;
 import com.hospitalsystem.Controller.DoctorController;
 import com.hospitalsystem.Model.Doctor;
 
 public class UpdateDoctorMenu {
     Scanner scan = new Scanner(System.in);
     private DoctorController doctorController;
+    public DeviceController deviceController;
 
     public UpdateDoctorMenu() {
         this.doctorController = new DoctorController();

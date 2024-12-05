@@ -40,7 +40,7 @@ public class CreateMedicationMenu {
         String medicationName = scan.nextLine();
         System.out.println("|| Medication dosage: ");
         String dosage = scan.nextLine();
-        System.out.println("|| Mdication frequency: ");
+        System.out.println("|| Medication frequency: ");
         String frequency = scan.nextLine();
         System.out.println("|| Medication description: ");
         String description = scan.nextLine();
