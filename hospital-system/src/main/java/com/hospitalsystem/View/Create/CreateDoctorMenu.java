@@ -20,9 +20,9 @@ public class CreateDoctorMenu {
         String name = scan.nextLine();
         System.out.println("|| Doctor's specialty: ");
         String specialty = scan.nextLine();
-        System.out.println("|| Doctor's CRM: ");
+        System.out.println("|| Doctor's CRM (CRM/SP 123456): ");
         String crm = scan.nextLine();
-        System.out.println("|| Doctor's phone: ");
+        System.out.println("|| Doctor's phone ((51) 91234-5678): ");
         String phone = scan.nextLine();
         System.out.println("|| Doctor's email: ");
         String email = scan.nextLine();

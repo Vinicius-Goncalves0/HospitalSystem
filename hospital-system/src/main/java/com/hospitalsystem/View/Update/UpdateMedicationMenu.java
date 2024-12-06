@@ -36,7 +36,7 @@ public class UpdateMedicationMenu {
             System.out.print("Enter Doctor: ");
             String doctor = scanner.nextLine();
 
-            System.out.print("Enter Prescription Date (YYYY-MM-DD): ");
+            System.out.print("Enter Prescription Date (dd/mm/aaaa): ");
             String prescriptionDate = scanner.nextLine();
 
             Medication medication = new Medication(id, name, dosage, frequency, description, doctor, prescriptionDate);

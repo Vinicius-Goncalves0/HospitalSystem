@@ -16,7 +16,7 @@ public class ListDoctor {
             List<Doctor> doctors = doctorController.listAllDoctors();
             System.out.println("\n=== Registered doctors ===\n");
             for (Doctor doctor : doctors) {
-                System.out.println("|| ID: " + doctor.getId() + " // " + "Name: " + doctor.getName());
+                System.out.println("|| ID: " + doctor.getId() + " // " + "Name: " + doctor.getName() + " // " + doctor.getSpecialty());
             }
         } catch (SQLException e) {
             e.printStackTrace();

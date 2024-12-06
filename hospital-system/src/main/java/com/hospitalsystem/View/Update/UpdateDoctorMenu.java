@@ -24,7 +24,7 @@ public class UpdateDoctorMenu {
         String specialty = scan.nextLine();
         System.out.println("|| Doctor's new CRM: ");
         String crm = scan.nextLine();
-        System.out.println("|| Doctor's new phone: ");
+        System.out.println("|| Doctor's new phone ((51) 91234-5678): ");
         String phone = scan.nextLine();
         System.out.println("|| Doctor's new email: ");
         String email = scan.nextLine();

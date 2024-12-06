@@ -9,12 +9,14 @@ import com.hospitalsystem.Controller.db_Connections.DoctorDAO;
 import com.hospitalsystem.Model.Doctor;
 import com.hospitalsystem.Model.Appointment;
 import com.hospitalsystem.Model.Patient;
+import com.hospitalsystem.View.List.ListDoctor;
 
 public class CreateAppointmentMenu {
     Scanner scan = new Scanner(System.in);
     private AppointmentController appointmentController;
     private PatientController patientController;
     CreateMedicationMenu createMedicationMenu = new CreateMedicationMenu();
+    ListDoctor listDoctor = new ListDoctor();
     DoctorDAO doctorDAO = new DoctorDAO();
 
     public CreateAppointmentMenu() {
@@ -26,6 +28,7 @@ public class CreateAppointmentMenu {
         System.out.print("\n=== Create Appointment ===\n");
         System.out.println("|| Appointment data and time: ");
         String appointmentDataTime = scan.nextLine();
+        listDoctor.listAllDoctors();
         System.out.println("|| Appointment's doctor name: ");
         String appointmentDoctorName = scan.nextLine();
         System.out.println("|| Diagnosis: ");

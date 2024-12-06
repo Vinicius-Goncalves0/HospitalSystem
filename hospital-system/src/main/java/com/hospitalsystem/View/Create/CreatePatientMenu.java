@@ -13,15 +13,15 @@ public class CreatePatientMenu {
         System.out.print("\n=== Create Patient ===\n");
         System.out.println("Patient's name: ");
         String name = scan.nextLine();
-        System.out.println("Patient's CPF: ");
+        System.out.println("Patient's CPF (123.456.789-00): ");
         String cpf = scan.nextLine();
-        System.out.println("Patient's birth date: ");
+        System.out.println("Patient's birth date (dd/mm/aaaa): ");
         String birthDate = scan.nextLine();
         System.out.println("Patient's medical history: ");
         String histories = scan.nextLine();
         System.out.println("Patient's address: ");
         String address = scan.nextLine();
-        System.out.println("Patient's phone: ");
+        System.out.println("Patient's phone ((51) 91234-5678): ");
         String phone = scan.nextLine();
         System.out.println("Patient's email: ");
         String email = scan.nextLine();

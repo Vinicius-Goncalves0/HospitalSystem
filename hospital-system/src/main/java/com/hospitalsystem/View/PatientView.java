@@ -49,10 +49,10 @@ public class PatientView {
                             if (patient != null) {
                                 patientAccessed(patient, patientName, scan);
                             } else {
-                                System.out.println("\n--- Paciente " + patientName + " não encontrado ---\n");
+                                System.out.println("\n--- Patient " + patientName + " not found ---\n");
                             }
                         } catch (SQLException e) {
-                            System.out.println("\n--- Erro ao acessar o paciente: " + patientName + " " + e.getMessage()
+                            System.out.println("\n--- Error accessing the patient: " + patientName + " " + e.getMessage()
                                     + " ---\n");
                         }
                         break;

@@ -10,6 +10,7 @@ import com.hospitalsystem.Controller.db_Connections.DoctorDAO;
 import com.hospitalsystem.Model.Doctor;
 import com.hospitalsystem.Model.Medication;
 import com.hospitalsystem.Model.Patient;
+import com.hospitalsystem.View.List.ListDoctor;
 import com.hospitalsystem.View.List.ListPatientAppointmentMenu;
 import com.hospitalsystem.Model.Appointment;
 
@@ -20,6 +21,7 @@ public class CreateMedicationMenu {
     private AppointmentController appointmentController;
     DoctorDAO doctorDAO = new DoctorDAO();
     ListPatientAppointmentMenu listPatientAppointmentMenu = new ListPatientAppointmentMenu();
+    ListDoctor listDoctor = new ListDoctor();
    
     
 
@@ -44,6 +46,7 @@ public class CreateMedicationMenu {
         String frequency = scan.nextLine();
         System.out.println("|| Medication description: ");
         String description = scan.nextLine();
+        listDoctor.listAllDoctors();
         System.out.println("|| Doctor name: ");
         String medicationDoctorName = scan.nextLine();
         System.out.println("|| Prescription date: ");
@@ -87,6 +90,7 @@ public class CreateMedicationMenu {
         String frequency = scan.nextLine();
         System.out.println("|| Medication description: ");
         String description = scan.nextLine();
+        listDoctor.listAllDoctors();
         System.out.println("|| Doctor name: ");
         String medicationDoctorName = scan.nextLine();
         System.out.println("|| Prescription date: ");

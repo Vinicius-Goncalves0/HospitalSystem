@@ -18,13 +18,13 @@ public class UpdatePatientMenu {
         System.out.println("\n=== Update Patient ===\n");
         System.out.println("Patient's new name: ");
         String name = scan.nextLine();
-        System.out.println("Patient's new CPF: ");
+        System.out.println("Patient's new CPF (123.456.789-00): ");
         String cpf = scan.nextLine();
-        System.out.println("Patient's new birth date: ");
+        System.out.println("Patient's new birth date (dd/mm/aaaa): ");
         String birthDate = scan.nextLine();
         System.out.println("Patient's new address: ");
         String address = scan.nextLine();
-        System.out.println("Patient's new phone: ");
+        System.out.println("Patient's new phone ((51) 91234-5678): ");
         String phone = scan.nextLine();
         System.out.println("Patient's new email: ");
         String email = scan.nextLine();
