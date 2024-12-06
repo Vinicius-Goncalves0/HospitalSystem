@@ -241,61 +241,86 @@ public class PatientDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-
+    
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-
+    
             conn = db_Connection.getConnection(Main.getDataBaseMode());
             conn.setAutoCommit(false);
-
+    
             String getAppointmentIdsSql = "SELECT appointment_id FROM hospital_system.patient_appointments WHERE patient_id = ?";
             stmt = conn.prepareStatement(getAppointmentIdsSql);
             stmt.setInt(1, patientId);
             rs = stmt.executeQuery();
-
+    
             List<Integer> appointmentIds = new ArrayList<>();
             while (rs.next()) {
                 appointmentIds.add(rs.getInt("appointment_id"));
             }
             rs.close();
             stmt.close();
-
+    
             String getPatientMedicationIdsSql = "SELECT medication_id FROM hospital_system.patient_medications WHERE patient_id = ?";
             stmt = conn.prepareStatement(getPatientMedicationIdsSql);
             stmt.setInt(1, patientId);
             rs = stmt.executeQuery();
-
+    
             Set<Integer> medicationIds = new HashSet<>();
             while (rs.next()) {
                 medicationIds.add(rs.getInt("medication_id"));
             }
             rs.close();
             stmt.close();
-
-            if (!appointmentIds.isEmpty()) {
-                StringBuilder appointmentIdPlaceholders = new StringBuilder();
-                for (int i = 0; i < appointmentIds.size(); i++) {
-                    appointmentIdPlaceholders.append("?");
-                    if (i < appointmentIds.size() - 1) {
-                        appointmentIdPlaceholders.append(",");
+    
+            String getPatientDeviceIdsSql = "SELECT device_id FROM hospital_system.patient_devices WHERE patient_id = ?";
+            stmt = conn.prepareStatement(getPatientDeviceIdsSql);
+            stmt.setInt(1, patientId);
+            rs = stmt.executeQuery();
+    
+            Set<Integer> deviceIds = new HashSet<>();
+            while (rs.next()) {
+                deviceIds.add(rs.getInt("device_id"));
+            }
+            rs.close();
+            stmt.close();
+    
+            String getPatientAlertIdsSql = "SELECT alert_id FROM hospital_system.patient_alerts WHERE patient_id = ?";
+            stmt = conn.prepareStatement(getPatientAlertIdsSql);
+            stmt.setInt(1, patientId);
+            rs = stmt.executeQuery();
+    
+            Set<Integer> alertIds = new HashSet<>();
+            while (rs.next()) {
+                alertIds.add(rs.getInt("alert_id"));
+            }
+            rs.close();
+            stmt.close();
+    
+            if (!deviceIds.isEmpty()) {
+                StringBuilder deviceIdPlaceholders = new StringBuilder();
+                for (int i = 0; i < deviceIds.size(); i++) {
+                    deviceIdPlaceholders.append("?");
+                    if (i < deviceIds.size() - 1) {
+                        deviceIdPlaceholders.append(",");
                     }
                 }
-
-                String getAppointmentMedicationIdsSql = "SELECT medication_id FROM hospital_system.appointment_medications WHERE appointment_id IN ("
-                        + appointmentIdPlaceholders.toString() + ")";
-                stmt = conn.prepareStatement(getAppointmentMedicationIdsSql);
-                for (int i = 0; i < appointmentIds.size(); i++) {
-                    stmt.setInt(i + 1, appointmentIds.get(i));
+    
+                String getDeviceAlertIdsSql = "SELECT alert_id FROM hospital_system.device_alerts WHERE device_id IN ("
+                        + deviceIdPlaceholders.toString() + ")";
+                stmt = conn.prepareStatement(getDeviceAlertIdsSql);
+                int index = 1;
+                for (Integer deviceId : deviceIds) {
+                    stmt.setInt(index++, deviceId);
                 }
                 rs = stmt.executeQuery();
-
+    
                 while (rs.next()) {
-                    medicationIds.add(rs.getInt("medication_id"));
+                    alertIds.add(rs.getInt("alert_id"));
                 }
                 rs.close();
                 stmt.close();
             }
-
+    
             if (!appointmentIds.isEmpty()) {
                 StringBuilder appointmentIdPlaceholders = new StringBuilder();
                 for (int i = 0; i < appointmentIds.size(); i++) {
@@ -304,7 +329,7 @@ public class PatientDAO {
                         appointmentIdPlaceholders.append(",");
                     }
                 }
-
+    
                 String deleteAppointmentMedicationsSql = "DELETE FROM hospital_system.appointment_medications WHERE appointment_id IN ("
                         + appointmentIdPlaceholders.toString() + ")";
                 stmt = conn.prepareStatement(deleteAppointmentMedicationsSql);
@@ -314,19 +339,51 @@ public class PatientDAO {
                 stmt.executeUpdate();
                 stmt.close();
             }
-
+    
+            if (!deviceIds.isEmpty()) {
+                StringBuilder deviceIdPlaceholders = new StringBuilder();
+                for (int i = 0; i < deviceIds.size(); i++) {
+                    deviceIdPlaceholders.append("?");
+                    if (i < deviceIds.size() - 1) {
+                        deviceIdPlaceholders.append(",");
+                    }
+                }
+    
+                String deleteDeviceAlertsSql = "DELETE FROM hospital_system.device_alerts WHERE device_id IN ("
+                        + deviceIdPlaceholders.toString() + ")";
+                stmt = conn.prepareStatement(deleteDeviceAlertsSql);
+                int index = 1;
+                for (Integer deviceId : deviceIds) {
+                    stmt.setInt(index++, deviceId);
+                }
+                stmt.executeUpdate();
+                stmt.close();
+            }
+    
             String deletePatientMedicationsSql = "DELETE FROM hospital_system.patient_medications WHERE patient_id = ?";
             stmt = conn.prepareStatement(deletePatientMedicationsSql);
             stmt.setInt(1, patientId);
             stmt.executeUpdate();
             stmt.close();
-
+    
+            String deletePatientDevicesSql = "DELETE FROM hospital_system.patient_devices WHERE patient_id = ?";
+            stmt = conn.prepareStatement(deletePatientDevicesSql);
+            stmt.setInt(1, patientId);
+            stmt.executeUpdate();
+            stmt.close();
+    
             String deletePatientAppointmentsSql = "DELETE FROM hospital_system.patient_appointments WHERE patient_id = ?";
             stmt = conn.prepareStatement(deletePatientAppointmentsSql);
             stmt.setInt(1, patientId);
             stmt.executeUpdate();
             stmt.close();
-
+    
+            String deletePatientAlertsSql = "DELETE FROM hospital_system.patient_alerts WHERE patient_id = ?";
+            stmt = conn.prepareStatement(deletePatientAlertsSql);
+            stmt.setInt(1, patientId);
+            stmt.executeUpdate();
+            stmt.close();
+    
             if (!medicationIds.isEmpty()) {
                 StringBuilder medicationIdPlaceholders = new StringBuilder();
                 for (int i = 0; i < medicationIds.size(); i++) {
@@ -335,7 +392,7 @@ public class PatientDAO {
                         medicationIdPlaceholders.append(",");
                     }
                 }
-
+    
                 String deleteMedicationsSql = "DELETE FROM hospital_system.medications WHERE id IN ("
                         + medicationIdPlaceholders.toString() + ")";
                 stmt = conn.prepareStatement(deleteMedicationsSql);
@@ -346,7 +403,47 @@ public class PatientDAO {
                 stmt.executeUpdate();
                 stmt.close();
             }
-
+    
+            if (!deviceIds.isEmpty()) {
+                StringBuilder deviceIdPlaceholders = new StringBuilder();
+                for (int i = 0; i < deviceIds.size(); i++) {
+                    deviceIdPlaceholders.append("?");
+                    if (i < deviceIds.size() - 1) {
+                        deviceIdPlaceholders.append(",");
+                    }
+                }
+    
+                String deleteDevicesSql = "DELETE FROM hospital_system.devices WHERE id IN ("
+                        + deviceIdPlaceholders.toString() + ")";
+                stmt = conn.prepareStatement(deleteDevicesSql);
+                int index = 1;
+                for (Integer deviceId : deviceIds) {
+                    stmt.setInt(index++, deviceId);
+                }
+                stmt.executeUpdate();
+                stmt.close();
+            }
+    
+            if (!alertIds.isEmpty()) {
+                StringBuilder alertIdPlaceholders = new StringBuilder();
+                for (int i = 0; i < alertIds.size(); i++) {
+                    alertIdPlaceholders.append("?");
+                    if (i < alertIds.size() - 1) {
+                        alertIdPlaceholders.append(",");
+                    }
+                }
+    
+                String deleteAlertsSql = "DELETE FROM hospital_system.alerts WHERE id IN ("
+                        + alertIdPlaceholders.toString() + ")";
+                stmt = conn.prepareStatement(deleteAlertsSql);
+                int index = 1;
+                for (Integer alertId : alertIds) {
+                    stmt.setInt(index++, alertId);
+                }
+                stmt.executeUpdate();
+                stmt.close();
+            }
+    
             if (!appointmentIds.isEmpty()) {
                 StringBuilder appointmentIdPlaceholders = new StringBuilder();
                 for (int i = 0; i < appointmentIds.size(); i++) {
@@ -355,7 +452,7 @@ public class PatientDAO {
                         appointmentIdPlaceholders.append(",");
                     }
                 }
-
+    
                 String deleteAppointmentsSql = "DELETE FROM hospital_system.appointments WHERE id IN ("
                         + appointmentIdPlaceholders.toString() + ")";
                 stmt = conn.prepareStatement(deleteAppointmentsSql);
@@ -365,21 +462,21 @@ public class PatientDAO {
                 stmt.executeUpdate();
                 stmt.close();
             }
-
+    
             String deletePatientSql = "DELETE FROM hospital_system.patients WHERE id = ?";
             stmt = conn.prepareStatement(deletePatientSql);
             stmt.setInt(1, patientId);
             stmt.executeUpdate();
             stmt.close();
-
+    
             conn.commit();
-
+    
         } catch (SQLException | ClassNotFoundException e) {
             if (conn != null) {
                 conn.rollback();
             }
             e.printStackTrace();
-            throw new SQLException("Error deleting the patient: " + e.getMessage());
+            throw new SQLException("Erro ao deletar o paciente: " + e.getMessage());
         } finally {
             if (stmt != null)
                 stmt.close();

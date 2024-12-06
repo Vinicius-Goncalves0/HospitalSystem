@@ -46,7 +46,7 @@ public class CreateMedicationMenu {
         String frequency = scan.nextLine();
         System.out.println("|| Medication description: ");
         String description = scan.nextLine();
-        listDoctor.listAllDoctors();
+        listDoctor.listAllDoctorsForSpecialty();
         System.out.println("|| Doctor name: ");
         String medicationDoctorName = scan.nextLine();
         System.out.println("|| Prescription date: ");
@@ -90,7 +90,7 @@ public class CreateMedicationMenu {
         String frequency = scan.nextLine();
         System.out.println("|| Medication description: ");
         String description = scan.nextLine();
-        listDoctor.listAllDoctors();
+        listDoctor.listAllDoctorsForSpecialty();
         System.out.println("|| Doctor name: ");
         String medicationDoctorName = scan.nextLine();
         System.out.println("|| Prescription date: ");

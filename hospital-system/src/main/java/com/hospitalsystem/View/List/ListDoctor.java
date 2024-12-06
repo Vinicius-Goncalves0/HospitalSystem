@@ -8,15 +8,28 @@ import com.hospitalsystem.Model.Doctor;
 
 public class ListDoctor {
     public void listAllDoctors() {
-        // Create a new PatientController object
         DoctorController doctorController = new DoctorController();
 
-        // List all patients
         try {
             List<Doctor> doctors = doctorController.listAllDoctors();
             System.out.println("\n=== Registered doctors ===\n");
             for (Doctor doctor : doctors) {
-                System.out.println("|| ID: " + doctor.getId() + " // " + "Name: " + doctor.getName() + " // " + doctor.getSpecialty());
+                System.out.println("|| ID: " + doctor.getId() + " // " + "Name: " + doctor.getName() + " // " + "Specialty: " + doctor.getSpecialty());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void listAllDoctorsForSpecialty() {
+        DoctorController doctorController = new DoctorController();
+
+        try {
+            List<Doctor> doctors = doctorController.listAllDoctors();
+            System.out.println("\n=== Registered doctors ===");
+            for (Doctor doctor : doctors) {
+                System.out.println("|| " + "Name: " + doctor.getName() + " // " + "Specialty: " + doctor.getSpecialty());
+                System.out.println("");
             }
         } catch (SQLException e) {
             e.printStackTrace();

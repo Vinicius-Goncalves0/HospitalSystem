@@ -15,6 +15,7 @@ public class AccessDevice {
 
     public void displayAccessDeviceMenu(Device device, String patientName, int deviceId) {
         Monitoring monitoring = new Monitoring();
+        ListAllAlerts listAllAlerts = new ListAllAlerts();
 
         while (true) {
             System.out.println("\n === Device ===\n");
@@ -40,6 +41,7 @@ public class AccessDevice {
                         break;
                     case 2:
                         monitoring.generatePatientAlert();
+                        listAllAlerts.displayAllAlerts();
                         break;
                     case 3:
                         createAlert.createAlert(patientName, deviceId);

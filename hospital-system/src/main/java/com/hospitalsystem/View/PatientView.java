@@ -7,6 +7,7 @@ import com.hospitalsystem.Controller.db_Connections.PatientDAO;
 import com.hospitalsystem.Model.Patient;
 import com.hospitalsystem.View.Create.CreateAppointmentMenuByPatient;
 import com.hospitalsystem.View.Create.CreatePatientMenu;
+import com.hospitalsystem.View.Delete.DeletePatient;
 import com.hospitalsystem.View.Delete.DeletePatientAppointment;
 import com.hospitalsystem.View.List.ListDataPatient;
 import com.hospitalsystem.View.List.ListPatientAppointmentMenu;
@@ -52,8 +53,9 @@ public class PatientView {
                                 System.out.println("\n--- Patient " + patientName + " not found ---\n");
                             }
                         } catch (SQLException e) {
-                            System.out.println("\n--- Error accessing the patient: " + patientName + " " + e.getMessage()
-                                    + " ---\n");
+                            System.out
+                                    .println("\n--- Error accessing the patient: " + patientName + " " + e.getMessage()
+                                            + " ---\n");
                         }
                         break;
                     case 3:
@@ -70,11 +72,13 @@ public class PatientView {
     }
 
     public void patientAccessed(Patient patient, String patientName, Scanner scan) {
+        DeletePatient deletePatient = new DeletePatient();
 
         while (true) {
             System.out.print("\n=== Patient: " + patient.getName() + " ===\n");
             System.out.println("1. Patient Data Menu");
             System.out.println("2. Appointment Menu");
+            System.out.println("3. Delete Account");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
 
@@ -92,6 +96,9 @@ public class PatientView {
                         break;
                     case 2:
                         appointmentMenu(patient, patientName, scan);
+                        break;
+                    case 3:
+                        deletePatient.deletePatient(patient.getId());
                         break;
                     default:
                         System.out.println("Invalid choice. Please try again.");

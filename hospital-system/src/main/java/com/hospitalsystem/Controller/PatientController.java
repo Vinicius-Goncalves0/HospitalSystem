@@ -32,4 +32,8 @@ public class PatientController {
     public List<Patient> listAllPatients() throws SQLException {
         return patientDAO.listAllPatients();
     }
+
+    public void deletePatient(int patientId) throws SQLException {
+        patientDAO.deletePatient(patientId);
+    }
 }

@@ -56,8 +56,9 @@ public class DocPatientView {
                                 System.out.println("\n--- Patient " + patientName + " not found ---\n");
                             }
                         } catch (SQLException e) {
-                            System.out.println("\n--- Error accessing the patient: " + patientName + " " + e.getMessage()
-                                    + " ---\n");
+                            System.out
+                                    .println("\n--- Error accessing the patient: " + patientName + " " + e.getMessage()
+                                            + " ---\n");
                         }
                         break;
                     case 2:
@@ -201,7 +202,7 @@ public class DocPatientView {
                         break;
                     case 4:
                         updateMedicationMenu.updateMedication();
-                        break;  
+                        break;
                     default:
                         System.out.println("Invalid choice. Please try again.");
                 }

@@ -3,6 +3,7 @@ package com.hospitalsystem.View.DocView;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import com.hospitalsystem.Controller.Monitoring;
 import com.hospitalsystem.Controller.db_Connections.DeviceDAO;
 import com.hospitalsystem.Model.Device;
 import com.hospitalsystem.Model.Patient;
@@ -188,6 +189,7 @@ public class DocMonitoringView {
         ListAllAlerts listAllAlerts = new ListAllAlerts();
         DeleteAlert deleteAlert = new DeleteAlert();
         DeviceDAO deviceDAO = new DeviceDAO();
+        Monitoring monitoring = new Monitoring();
 
         while (true) {
             System.out.print("\n=== Alerts Menu ===\n");
@@ -220,6 +222,7 @@ public class DocMonitoringView {
                         }
                         break;
                     case 2:
+                        monitoring.generatePatientAlert();
                         listAllAlerts.listAlertsByPatientId(patient.getId());
                         break;
                     case 3:

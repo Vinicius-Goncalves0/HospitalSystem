@@ -205,13 +205,10 @@ public class DeviceDAO {
         ResultSet rs = null;
 
         try {
-            // Load the MySQL JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Establish the connection
             conn = db_Connection.getConnection(Main.getDataBaseMode());
 
-            // Get patient ID
             getPatientIdStmt = conn.prepareStatement(getPatientIdSql);
             getPatientIdStmt.setString(1, patientName);
             rs = getPatientIdStmt.executeQuery();
@@ -219,13 +216,11 @@ public class DeviceDAO {
             if (rs.next()) {
                 int patientId = rs.getInt("id");
 
-                // Delete device from patient
                 deletePatientDeviceStmt = conn.prepareStatement(deletePatientDeviceSql);
                 deletePatientDeviceStmt.setInt(1, patientId);
                 deletePatientDeviceStmt.setInt(2, deviceId);
                 deletePatientDeviceStmt.executeUpdate();
 
-                // Delete device from devices table
                 deleteDeviceStmt = conn.prepareStatement(deleteDeviceSql);
                 deleteDeviceStmt.setInt(1, deviceId);
                 deleteDeviceStmt.executeUpdate();
@@ -358,21 +353,16 @@ public class DeviceDAO {
         Device device = null;
 
         try {
-            // Load the MySQL JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Establish the connection
             conn = db_Connection.getConnection(Main.getDataBaseMode());
 
-            // Prepare the SQL query
             String sql = "SELECT * FROM devices WHERE id = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, deviceId);
 
-            // Execute the query
             rs = stmt.executeQuery();
 
-            // Checks if it has found a device
             if (rs.next()) {
                 device = new Device(
                     rs.getInt("id"),
@@ -410,21 +400,16 @@ public class DeviceDAO {
         List<Device> devices = new ArrayList<>();
 
         try {
-            // Load the MySQL JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Establish the connection
             conn = db_Connection.getConnection(Main.getDataBaseMode());
 
-            // Prepare the SQL query
             String sql = "SELECT * FROM devices WHERE id LIKE ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + deviceId + "%");
 
-            // Execute the query
             rs = stmt.executeQuery();
 
-            // Iterate through the result set and create Patient objects
             while (rs.next()) {
                 Device device = new Device(
                         rs.getString("type"),

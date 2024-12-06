@@ -36,8 +36,6 @@ public class ListPatientAppointmentMenu {
         }
     }
 
-    // _____________________________________________________________
-
     public void displayAppointments(List<Appointment> appointments) {
         ListDataDoctor listDataDoctorMenu = new ListDataDoctor();
         ListPatientMedicationMenu listMedicationsByAppointmentID = new ListPatientMedicationMenu();

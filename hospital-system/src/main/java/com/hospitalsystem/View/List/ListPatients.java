@@ -8,10 +8,8 @@ import com.hospitalsystem.Model.Patient;
 
 public class ListPatients {
     public void listAllPatients() {
-        // Create a new PatientController object
         PatientController patientController = new PatientController();
 
-        // List all patients
         try {
             List<Patient> patients = patientController.listAllPatients();
             System.out.println("\n=== Registered patients ===");

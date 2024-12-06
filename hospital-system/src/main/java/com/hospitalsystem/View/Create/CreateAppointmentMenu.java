@@ -28,7 +28,7 @@ public class CreateAppointmentMenu {
         System.out.print("\n=== Create Appointment ===\n");
         System.out.println("|| Appointment data and time: ");
         String appointmentDataTime = scan.nextLine();
-        listDoctor.listAllDoctors();
+        listDoctor.listAllDoctorsForSpecialty();
         System.out.println("|| Appointment's doctor name: ");
         String appointmentDoctorName = scan.nextLine();
         System.out.println("|| Diagnosis: ");

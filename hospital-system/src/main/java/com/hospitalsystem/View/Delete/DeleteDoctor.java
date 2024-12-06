@@ -7,6 +7,7 @@ import com.hospitalsystem.Controller.db_Connections.DoctorDAO;
 
 public class DeleteDoctor {
     public void deleteDoctor(int doctorId) {
+        @SuppressWarnings("resource")
         Scanner scan = new Scanner(System.in);
         DoctorDAO doctorDAO = new DoctorDAO();
 
@@ -14,7 +15,7 @@ public class DeleteDoctor {
         System.out.println("Type 'Yes, I want to delete.' to confirm, or any other key to cancel.");
         String confirmation = scan.nextLine();
 
-        if (!confirmation.equals("Yes, I want to delete.")) {
+        if (confirmation.equals("Yes, I want to delete.")) {
             try {
                 doctorDAO.deleteDoctor(doctorId);
                 System.out.println("Doctor deleted successfully.");
@@ -22,6 +23,5 @@ public class DeleteDoctor {
                 System.out.println("\n--- Error deleting doctor: " + e.getMessage() + " ---\n");
             }
         }
-        scan.close();
     }
 }
